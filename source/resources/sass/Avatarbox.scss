@@ -1,0 +1,115 @@
+@import 'Variables.scss';
+
+#Avatarbox{
+    
+    width: 100%;
+    height: 100%;
+    
+    font-family: $fontStack;
+    
+}
+
+.Avatarbox__message{
+    
+    width: 0px;
+    height: 0px;
+    
+    z-index: 1;
+    
+}
+
+.Avatarbox__message__bubble,
+.Avatarbox__message__name{
+    
+    position: absolute;
+    
+    font-size: 12px;
+    
+}
+
+.Avatarbox__message__bubble{
+    
+    display: inline-block;
+    
+    min-width: 75px;
+    max-width: 275px;
+    
+    bottom: 70px;
+    
+    padding: 13px;
+    
+    border-radius: $cornerRadius--huge;
+    box-sizing: border-box;
+    
+    transform: translateX(-60%);
+    transform-origin: center bottom;
+    
+    background-color: $bubbleColor--generic;
+    box-shadow: 0px 5px 2px 0px rgba(0, 0, 0, 0.25);
+    
+    color: $fontColor;
+    
+    visibility: hidden;
+}
+
+.Avatarbox__bubble__inner{
+    
+    display: inline-block;
+    
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.Avatarbox__message__bubble:after{
+    
+    content: '';
+    display: block;
+    position: absolute;
+    
+    width: 0;
+    height: 0;
+    
+    left: 0px;
+    right: 0px;
+    margin: 0px auto;
+    
+    border-style: solid;
+    border-width: 25px 35px 0 0px;
+    border-color: $bubbleColor--generic transparent transparent transparent;
+
+}
+
+.Avatarbox__message__bubble.own{
+    
+    background-color: $bubbleColor--own;
+    
+}
+
+.Avatarbox__message__bubble.own:after{
+    
+    border-color: $bubbleColor--own transparent transparent transparent;
+    
+}
+
+.Avatarbox__message__name{
+    
+    width: 200px;
+    
+    top: 28px;
+
+    text-align: center;
+    
+    transform: translateX(-68%);
+    
+}
+
+.Avatarbox__message__name.own{
+    
+    font-weight: bold;
+    color: $fontColor--own;
+    
+}
