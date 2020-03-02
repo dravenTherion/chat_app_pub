@@ -1,17 +1,21 @@
 div,
 canvas,
-img{
-    margin: 0px;
-    padding: 0px;
+img,
+input{
     border: 0;
 }
 
 div,
-canvas{
+canvas,
+img{
     position: absolute;
     display: block;
+    
+    margin: 0px;
+    padding: 0px;
 }
 
-input{
-    border: 0;
+img{
+    position: relative;
+    display: inline;
 }

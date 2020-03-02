@@ -3807,7 +3807,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "#Avatarbox {\n  width: 100%;\n  height: 100%;\n  font-family: \"Roboto\", sans-serif;\n}\n\n.Avatarbox__message {\n  width: 0px;\n  height: 0px;\n  z-index: 1;\n}\n\n.Avatarbox__message__bubble,\n.Avatarbox__message__name {\n  position: absolute;\n  font-size: 12px;\n}\n\n.Avatarbox__message__bubble {\n  display: inline-block;\n  min-width: 75px;\n  max-width: 275px;\n  bottom: 70px;\n  padding: 13px;\n  border-radius: 20px;\n  box-sizing: border-box;\n  -webkit-transform: translateX(-60%);\n          transform: translateX(-60%);\n  -webkit-transform-origin: center bottom;\n          transform-origin: center bottom;\n  background-color: #787878;\n  box-shadow: 0px 5px 2px 0px rgba(0, 0, 0, 0.25);\n  color: aliceblue;\n  visibility: hidden;\n}\n\n.Avatarbox__bubble__inner {\n  display: inline-block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  padding: 0px;\n  margin: 0px;\n}\n\n.Avatarbox__message__bubble:after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 0;\n  height: 0;\n  left: 0px;\n  right: 0px;\n  margin: 0px auto;\n  border-style: solid;\n  border-width: 25px 35px 0 0px;\n  border-color: #787878 transparent transparent transparent;\n}\n\n.Avatarbox__message__bubble.own {\n  background-color: #0d5e9f;\n}\n\n.Avatarbox__message__bubble.own:after {\n  border-color: #0d5e9f transparent transparent transparent;\n}\n\n.Avatarbox__message__name {\n  width: 200px;\n  top: 28px;\n  text-align: center;\n  -webkit-transform: translateX(-68%);\n          transform: translateX(-68%);\n}\n\n.Avatarbox__message__name.own {\n  font-weight: bold;\n  color: #0d5e9f;\n}", ""]);
+exports.push([module.i, "#Avatarbox {\n  width: 100%;\n  height: 100%;\n  font-family: \"Roboto\", sans-serif;\n}\n#Avatarbox .Avatarbox__message {\n  width: 0px;\n  height: 0px;\n  z-index: 1;\n}\n#Avatarbox .Avatarbox__message .Avatarbox__message__name,\n#Avatarbox .Avatarbox__message .Avatarbox__message__bubble {\n  position: absolute;\n  font-size: 12px;\n}\n#Avatarbox .Avatarbox__message .Avatarbox__message__name {\n  width: 200px;\n  top: 28px;\n  text-align: center;\n  -webkit-transform: translateX(-68%);\n          transform: translateX(-68%);\n}\n#Avatarbox .Avatarbox__message .Avatarbox__message__name.own {\n  font-weight: bold;\n  color: #0d5e9f;\n}\n#Avatarbox .Avatarbox__message .Avatarbox__message__bubble {\n  display: inline-block;\n  min-width: 75px;\n  max-width: 275px;\n  bottom: 70px;\n  padding: 13px;\n  border-radius: 20px;\n  box-sizing: border-box;\n  -webkit-transform: translateX(-60%);\n          transform: translateX(-60%);\n  -webkit-transform-origin: center bottom;\n          transform-origin: center bottom;\n  background-color: #787878;\n  box-shadow: 0px 5px 2px 0px rgba(0, 0, 0, 0.25);\n  color: aliceblue;\n  visibility: hidden;\n}\n#Avatarbox .Avatarbox__message .Avatarbox__message__bubble :after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 0;\n  height: 0;\n  left: 0px;\n  right: 0px;\n  margin: 0px auto;\n  border-style: solid;\n  border-width: 25px 35px 0 0px;\n  border-color: #787878 transparent transparent transparent;\n}\n#Avatarbox .Avatarbox__message .Avatarbox__message__bubble.own {\n  background-color: #0d5e9f;\n}\n#Avatarbox .Avatarbox__message .Avatarbox__message__bubble.own :after {\n  border-color: #0d5e9f transparent transparent transparent;\n}\n#Avatarbox .Avatarbox__message .Avatarbox__bubble__inner {\n  display: inline-block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  padding: 0px;\n  margin: 0px;\n}", ""]);
 
 // exports
 
@@ -3845,7 +3845,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "div,\ncanvas,\nimg {\n  margin: 0px;\n  padding: 0px;\n  border: 0;\n}\n\ndiv,\ncanvas {\n  position: absolute;\n  display: block;\n}\n\ninput {\n  border: 0;\n}\n\n#Chatbox {\n  position: absolute;\n  display: block;\n  bottom: 0px;\n  left: 0px;\n  right: 0px;\n  margin: 0px auto;\n  width: 40%;\n  height: 50px;\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  background-color: #555;\n  z-index: 2;\n}\n\n.Chatbox__textbox {\n  position: absolute;\n  display: block;\n  width: 95%;\n  height: 60%;\n  left: 0px;\n  top: 0px;\n  right: 0px;\n  bottom: 0px;\n  margin: auto;\n  padding: 5px;\n  box-sizing: border-box;\n  border-radius: 3px;\n}", ""]);
+exports.push([module.i, "div,\ncanvas,\nimg,\ninput {\n  border: 0;\n}\n\ndiv,\ncanvas,\nimg {\n  position: absolute;\n  display: block;\n  margin: 0px;\n  padding: 0px;\n}\n\nimg {\n  position: relative;\n  display: inline;\n}\n\n#Chatbox {\n  position: absolute;\n  display: block;\n  bottom: 0px;\n  left: 0px;\n  right: 0px;\n  margin: 0px auto;\n  width: 40%;\n  height: 50px;\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  background-color: #555;\n  z-index: 2;\n}\n#Chatbox .Chatbox__textbox {\n  position: absolute;\n  display: block;\n  width: 95%;\n  height: 60%;\n  left: 0px;\n  top: 0px;\n  right: 0px;\n  bottom: 0px;\n  margin: auto;\n  padding: 5px;\n  box-sizing: border-box;\n  border-radius: 3px;\n}", ""]);
 
 // exports
 
@@ -5310,154 +5310,6 @@ Object(_gsap_core_js__WEBPACK_IMPORTED_MODULE_0__["_forEachName"])("x,y,z,top,ri
 });
 
 _gsap_core_js__WEBPACK_IMPORTED_MODULE_0__["gsap"].registerPlugin(CSSPlugin);
-
-
-/***/ }),
-
-/***/ "./node_modules/gsap/CSSRulePlugin.js":
-/*!********************************************!*\
-  !*** ./node_modules/gsap/CSSRulePlugin.js ***!
-  \********************************************/
-/*! exports provided: CSSRulePlugin, default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CSSRulePlugin", function() { return CSSRulePlugin; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CSSRulePlugin; });
-/*!
- * CSSRulePlugin 3.0.4
- * https://greensock.com
- *
- * @license Copyright 2008-2019, GreenSock. All rights reserved.
- * Subject to the terms at https://greensock.com/standard-license or for
- * Club GreenSock members, the agreement issued with that membership.
- * @author: Jack Doyle, jack@greensock.com
-*/
-
-/* eslint-disable */
-var gsap,
-    _coreInitted,
-    _win,
-    _doc,
-    CSSPlugin,
-    _windowExists = function _windowExists() {
-  return typeof window !== "undefined";
-},
-    _getGSAP = function _getGSAP() {
-  return gsap || _windowExists() && (gsap = window.gsap) && gsap.registerPlugin && gsap;
-},
-    _checkRegister = function _checkRegister() {
-  if (!_coreInitted) {
-    _initCore();
-
-    if (!CSSPlugin) {
-      console.warn("Please gsap.registerPlugin(CSSPlugin, CSSRulePlugin)");
-    }
-  }
-
-  return _coreInitted;
-},
-    _initCore = function _initCore(core) {
-  gsap = core || _getGSAP();
-
-  if (_windowExists()) {
-    _win = window;
-    _doc = document;
-  }
-
-  if (gsap) {
-    CSSPlugin = gsap.plugins.css;
-
-    if (CSSPlugin) {
-      _coreInitted = 1;
-    }
-  }
-};
-
-var CSSRulePlugin = {
-  version: "3.0.4",
-  name: "cssRule",
-  init: function init(target, value, tween, index, targets) {
-    if (!_checkRegister() || typeof target.cssText === "undefined") {
-      return false;
-    }
-
-    var div = target._gsProxy = target._gsProxy || _doc.createElement("div");
-
-    this.ss = target;
-    this.style = div.style;
-    div.style.cssText = target.cssText;
-    CSSPlugin.prototype.init.call(this, div, value, tween, index, targets); //we just offload all the work to the regular CSSPlugin and then copy the cssText back over to the rule in the render() method. This allows us to have all of the updates to CSSPlugin automatically flow through to CSSRulePlugin instead of having to maintain both
-  },
-  render: function render(ratio, data) {
-    var pt = data._pt,
-        style = data.style,
-        ss = data.ss,
-        i;
-
-    while (pt) {
-      pt.r(ratio, pt.d);
-      pt = pt._next;
-    }
-
-    i = style.length;
-
-    while (--i > -1) {
-      ss[style[i]] = style[style[i]];
-    }
-  },
-  getRule: function getRule(selector) {
-    _checkRegister();
-
-    var ruleProp = _doc.all ? "rules" : "cssRules",
-        styleSheets = _doc.styleSheets,
-        i = styleSheets.length,
-        pseudo = selector.charAt(0) === ":",
-        j,
-        curSS,
-        cs,
-        a;
-    selector = (pseudo ? "" : ",") + selector.split("::").join(":").toLowerCase() + ","; //note: old versions of IE report tag name selectors as upper case, so we just change everything to lowercase.
-
-    if (pseudo) {
-      a = [];
-    }
-
-    while (i--) {
-      //Firefox may throw insecure operation errors when css is loaded from other domains, so try/catch.
-      try {
-        curSS = styleSheets[i][ruleProp];
-
-        if (!curSS) {
-          continue;
-        }
-
-        j = curSS.length;
-      } catch (e) {
-        console.warn(e);
-        continue;
-      }
-
-      while (--j > -1) {
-        cs = curSS[j];
-
-        if (cs.selectorText && ("," + cs.selectorText.split("::").join(":").toLowerCase() + ",").indexOf(selector) !== -1) {
-          //note: IE adds an extra ":" to pseudo selectors, so .myClass:after becomes .myClass::after, so we need to strip the extra one out.
-          if (pseudo) {
-            a.push(cs.style);
-          } else {
-            return cs.style;
-          }
-        }
-      }
-    }
-
-    return a;
-  },
-  register: _initCore
-};
-_getGSAP() && gsap.registerPlugin(CSSRulePlugin);
 
 
 /***/ }),
@@ -65834,7 +65686,7 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/spritesheet.png?d64c9edd7eaa914e250c5368dbadffde";
+module.exports = "/images/spritesheet.png?bca29146acc2a3addf4c4203fd646e59";
 
 /***/ }),
 
@@ -65911,14 +65763,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var pusher_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 /* harmony import */ var pusher_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(pusher_js__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
-/* harmony import */ var gsap_CSSRulePlugin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! gsap/CSSRulePlugin */ "./node_modules/gsap/CSSRulePlugin.js");
-/* harmony import */ var _Settings_Config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../Settings/Config */ "./resources/js/components/Settings/Config.js");
-/* harmony import */ var _Helpers_Rand__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../Helpers/Rand */ "./resources/js/components/Helpers/Rand.js");
-/* harmony import */ var _Helpers_Renderer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../Helpers/Renderer */ "./resources/js/components/Helpers/Renderer.js");
-/* harmony import */ var _sass_Avatarbox_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../../../sass/Avatarbox.scss */ "./resources/sass/Avatarbox.scss");
-/* harmony import */ var _sass_Avatarbox_scss__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_sass_Avatarbox_scss__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _img_spritesheet_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./../../../img/spritesheet.png */ "./resources/img/spritesheet.png");
-/* harmony import */ var _img_spritesheet_png__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_img_spritesheet_png__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _Settings_Config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../Settings/Config */ "./resources/js/components/Settings/Config.js");
+/* harmony import */ var _Helpers_Rand__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../Helpers/Rand */ "./resources/js/components/Helpers/Rand.js");
+/* harmony import */ var _Helpers_Renderer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../Helpers/Renderer */ "./resources/js/components/Helpers/Renderer.js");
+/* harmony import */ var _sass_Avatarbox_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../../../sass/Avatarbox.scss */ "./resources/sass/Avatarbox.scss");
+/* harmony import */ var _sass_Avatarbox_scss__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_sass_Avatarbox_scss__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _img_spritesheet_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../../../img/spritesheet.png */ "./resources/img/spritesheet.png");
+/* harmony import */ var _img_spritesheet_png__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_img_spritesheet_png__WEBPACK_IMPORTED_MODULE_8__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -65944,7 +65795,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -65988,7 +65838,6 @@ function (_React$Component) {
     _this.handleLeave = _this.handleLeave.bind(_assertThisInitialized(_this));
     _this.handleUpdate = _this.handleUpdate.bind(_assertThisInitialized(_this));
     _this.handleMessage = _this.handleMessage.bind(_assertThisInitialized(_this));
-    gsap__WEBPACK_IMPORTED_MODULE_3__["default"].registerPlugin(gsap_CSSRulePlugin__WEBPACK_IMPORTED_MODULE_4__["CSSRulePlugin"]);
     return _this;
   }
 
@@ -65999,11 +65848,11 @@ function (_React$Component) {
 
       this.handleResize();
       window.addEventListener('resize', this.handleResize);
-      var pusher = new pusher_js__WEBPACK_IMPORTED_MODULE_2___default.a(_Settings_Config__WEBPACK_IMPORTED_MODULE_5__["default"].pusherKey, {
-        cluster: _Settings_Config__WEBPACK_IMPORTED_MODULE_5__["default"].pusherCluster,
-        forceTLS: _Settings_Config__WEBPACK_IMPORTED_MODULE_5__["default"].forceTLS
+      var pusher = new pusher_js__WEBPACK_IMPORTED_MODULE_2___default.a(_Settings_Config__WEBPACK_IMPORTED_MODULE_4__["default"].pusherKey, {
+        cluster: _Settings_Config__WEBPACK_IMPORTED_MODULE_4__["default"].pusherCluster,
+        forceTLS: _Settings_Config__WEBPACK_IMPORTED_MODULE_4__["default"].forceTLS
       });
-      var channel = pusher.subscribe('chat_channel');
+      var channel = pusher.subscribe(_Settings_Config__WEBPACK_IMPORTED_MODULE_4__["default"].defaultChannel ? _Settings_Config__WEBPACK_IMPORTED_MODULE_4__["default"].defaultChannel : 'chat_channel');
       channel.bind('join_event', this.handleJoin);
       channel.bind('leave_event', this.handleLeave);
       channel.bind('update_event', this.handleUpdate);
@@ -66011,8 +65860,9 @@ function (_React$Component) {
       var payload = {
         id: this.props.id,
         user: this.props.name,
-        x: Math.floor(_Helpers_Rand__WEBPACK_IMPORTED_MODULE_6__["default"].range(this.width * 0.1, this.width * 0.9)),
-        y: Math.floor(_Helpers_Rand__WEBPACK_IMPORTED_MODULE_6__["default"].range(this.height * 0.25, this.height * 0.75))
+        x: Math.floor(Object(_Helpers_Rand__WEBPACK_IMPORTED_MODULE_5__["randRange"])(this.width * 0.1, this.width * 0.9)),
+        y: Math.floor(Object(_Helpers_Rand__WEBPACK_IMPORTED_MODULE_5__["randRange"])(this.height * 0.25, this.height * 0.75)),
+        avatar: Math.floor(Object(_Helpers_Rand__WEBPACK_IMPORTED_MODULE_5__["randRange"])(0, 1))
       };
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/client_join', payload)["catch"](function (error) {
         _this2.setState({
@@ -66026,8 +65876,8 @@ function (_React$Component) {
           navigator.sendBeacon('api/client_leave?' + data);
         });
       });
-      _Helpers_Renderer__WEBPACK_IMPORTED_MODULE_7__["default"].init(this.canvas, this.clients, _img_spritesheet_png__WEBPACK_IMPORTED_MODULE_9___default.a);
-      gsap__WEBPACK_IMPORTED_MODULE_3__["default"].ticker.add(_Helpers_Renderer__WEBPACK_IMPORTED_MODULE_7__["default"].renderCanvas);
+      _Helpers_Renderer__WEBPACK_IMPORTED_MODULE_6__["default"].init(this.canvas, this.clients, _img_spritesheet_png__WEBPACK_IMPORTED_MODULE_8___default.a);
+      gsap__WEBPACK_IMPORTED_MODULE_3__["default"].ticker.add(_Helpers_Renderer__WEBPACK_IMPORTED_MODULE_6__["default"].renderCanvas);
     }
   }, {
     key: "componentWillUnmount",
@@ -66102,36 +65952,21 @@ function (_React$Component) {
     value: function handleUpdate(data) {
       var _this3 = this;
 
+      if (data.isResponse && data.id === this.props.id) return;
       var clientFound = this.clients.find(function (u) {
         return data.id === u.id;
-      });
-      var adjFactor = 1;
-      var speed = 250,
-          //deltaX = data.tx - (data.isResponse !== undefined ? data.x : clientFound.x),     
-      deltaX = data.tx - clientFound.x,
-          //(data.isResponse !== undefined ? data.x : clientFound.x),     
-      //deltaY = data.ty - (data.isResponse !== undefined ? data.y : clientFound.y),
-      deltaY = data.ty - clientFound.y,
-          //(data.isResponse !== undefined ? data.y : clientFound.y),
-      dist = Math.sqrt(deltaX * deltaX + deltaY * deltaY),
-          time = dist / speed,
-          deltaTime = (Date.now() - this.tsUpdateRequest) / 1000,
-          distXAtDeltaTime = data.x + (data.id === this.props.id ? deltaTime / time * deltaX * adjFactor : 0),
-          distYAtDeltaTime = data.y + (data.id === this.props.id ? deltaTime / time * deltaY * adjFactor : 0);
+      }),
+          speed = 300,
+          deltaX = data.tx - clientFound.x,
+          deltaY = data.ty - clientFound.y,
+          dist = Math.sqrt(deltaX * deltaX + deltaY * deltaY),
+          time = dist / speed;
 
       if (clientFound !== undefined) {
         clientFound.direction = data.tx < data.x ? -1 : 1;
         clientFound.currentFrameSet = 1;
         gsap__WEBPACK_IMPORTED_MODULE_3__["default"].killTweensOf(clientFound);
         gsap__WEBPACK_IMPORTED_MODULE_3__["default"].killTweensOf(clientFound.dom);
-        gsap__WEBPACK_IMPORTED_MODULE_3__["default"].set(clientFound, {
-          x: distXAtDeltaTime,
-          y: distYAtDeltaTime
-        });
-        gsap__WEBPACK_IMPORTED_MODULE_3__["default"].set(clientFound.dom, {
-          x: distXAtDeltaTime,
-          y: distYAtDeltaTime
-        });
         gsap__WEBPACK_IMPORTED_MODULE_3__["default"].to(clientFound, time, {
           x: data.tx,
           y: data.ty,
@@ -66187,7 +66022,8 @@ function (_React$Component) {
         activeClients: [].concat(_toConsumableArray(this.state.activeClients), [{
           id: user.id,
           user: user.user,
-          message: ''
+          message: '',
+          avatar: user.avatar
         }])
       });
       var clientFound = this.clients.find(function (u) {
@@ -66209,7 +66045,10 @@ function (_React$Component) {
 
   }, {
     key: "addReference",
-    value: function addReference(id, element) {
+    value: function addReference(client, element) {
+      var frameWidth = 95,
+          frameHeight = 150;
+      var id = client.id;
       var found = this.clients.find(function (u) {
         return id === u.id;
       });
@@ -66220,13 +66059,13 @@ function (_React$Component) {
           dom: element,
           x: 0,
           y: 0,
-          frames: [new _Helpers_Renderer__WEBPACK_IMPORTED_MODULE_7__["default"].frame(0, 0, 95, 150, 30, Math.floor(_Helpers_Rand__WEBPACK_IMPORTED_MODULE_6__["default"].range(0, 29))), new _Helpers_Renderer__WEBPACK_IMPORTED_MODULE_7__["default"].frame(95, 0, 95, 150, 20, Math.floor(_Helpers_Rand__WEBPACK_IMPORTED_MODULE_6__["default"].range(0, 19)))],
+          frames: [new _Helpers_Renderer__WEBPACK_IMPORTED_MODULE_6__["default"].frame(client.avatar * frameWidth * 2, 0, frameWidth, frameHeight, 30, Math.floor(Object(_Helpers_Rand__WEBPACK_IMPORTED_MODULE_5__["randRange"])(0, 29))), new _Helpers_Renderer__WEBPACK_IMPORTED_MODULE_6__["default"].frame(client.avatar * frameWidth * 2 + frameWidth, 0, frameWidth, frameHeight, 20, 0)],
           currentFrameSet: 0,
           direction: 1
         };
         if (id === this.props.id) this.Avatar = avatar;
         this.clients = [].concat(_toConsumableArray(this.clients), [avatar]);
-        _Helpers_Renderer__WEBPACK_IMPORTED_MODULE_7__["default"].setList(this.clients);
+        _Helpers_Renderer__WEBPACK_IMPORTED_MODULE_6__["default"].setList(this.clients);
       }
     }
     /** HANDLE CLIENT LEAVE **/
@@ -66243,7 +66082,7 @@ function (_React$Component) {
       this.clients = this.clients.filter(function (u) {
         return u.id !== data.id;
       });
-      _Helpers_Renderer__WEBPACK_IMPORTED_MODULE_7__["default"].setList(this.clients); //console.log('left', data);
+      _Helpers_Renderer__WEBPACK_IMPORTED_MODULE_6__["default"].setList(this.clients); //console.log('left', data);
     }
     /** RENDER CANVAS **/
 
@@ -66263,20 +66102,20 @@ function (_React$Component) {
         ref: function ref(canvas) {
           return _this5.canvas = canvas;
         }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.activeClients.map(function (user) {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.activeClients.map(function (client) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "Avatarbox__message",
-          key: user.id,
+          key: client.id,
           ref: function ref(div) {
-            return _this5.addReference(user.id, div);
+            return _this5.addReference(client, div);
           }
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: 'Avatarbox__message__bubble' + (user.id === _this5.props.id ? ' own' : '')
+          className: 'Avatarbox__message__bubble' + (client.id === _this5.props.id ? ' own' : '')
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "Avatarbox_bubble__inner"
-        }, user.message)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: 'Avatarbox__message__name' + (user.id === _this5.props.id ? ' own' : '')
-        }, user.user));
+        }, client.message)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: 'Avatarbox__message__name' + (client.id === _this5.props.id ? ' own' : '')
+        }, client.user));
       })));
     }
   }]);
@@ -66300,13 +66139,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ChatContainer; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Helpers_Rand__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../Helpers/Rand */ "./resources/js/components/Helpers/Rand.js");
-/* harmony import */ var _Chatbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Chatbox */ "./resources/js/components/Chat/Chatbox.js");
-/* harmony import */ var _Avatarbox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Avatarbox */ "./resources/js/components/Chat/Avatarbox.js");
-/* harmony import */ var _sass_ChatContainer_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../../../sass/ChatContainer.scss */ "./resources/sass/ChatContainer.scss");
-/* harmony import */ var _sass_ChatContainer_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_sass_ChatContainer_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Helpers_Rand__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../Helpers/Rand */ "./resources/js/components/Helpers/Rand.js");
+/* harmony import */ var _Chatbox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Chatbox */ "./resources/js/components/Chat/Chatbox.js");
+/* harmony import */ var _Avatarbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Avatarbox */ "./resources/js/components/Chat/Avatarbox.js");
+/* harmony import */ var _sass_ChatContainer_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../../sass/ChatContainer.scss */ "./resources/sass/ChatContainer.scss");
+/* harmony import */ var _sass_ChatContainer_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_sass_ChatContainer_scss__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66331,7 +66168,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var ChatContainer =
 /*#__PURE__*/
 function (_React$Component) {
@@ -66347,7 +66183,7 @@ function (_React$Component) {
       id: '',
       user: ''
     };
-    _this.name = _Helpers_Rand__WEBPACK_IMPORTED_MODULE_2__["default"].getName();
+    _this.name = Object(_Helpers_Rand__WEBPACK_IMPORTED_MODULE_1__["randName"])();
     _this.id = _this.name + '_' + Date.now();
     return _this;
   }
@@ -66365,10 +66201,10 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "ChatContainer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatarbox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatarbox__WEBPACK_IMPORTED_MODULE_3__["default"], {
         id: this.id,
         name: this.name
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Chatbox__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Chatbox__WEBPACK_IMPORTED_MODULE_2__["default"], {
         id: this.id,
         name: this.name
       }));
@@ -66443,30 +66279,34 @@ function (_React$Component) {
   _createClass(Chatbox, [{
     key: "handleTextChange",
     value: function handleTextChange(e) {
-      var _this2 = this;
-
       if (e.keyCode === 13 && this.state.text.trim().length > 0) {
-        var payload = {
-          id: this.props.id,
-          user: this.props.name,
-          message: this.state.text
-        }; //axios.post('http://localhost:5000/message', payload);
-
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/send_message', payload).then(function (response) {
-          // clear form input
-          _this2.setState({
-            text: ''
-          });
-        })["catch"](function (error) {
-          _this2.setState({
-            errors: error.response.data.errors
-          });
-        });
+        this.sendMessage(this.state.text);
       } else {
         this.setState({
           text: e.target.value
         });
       }
+    }
+  }, {
+    key: "sendMessage",
+    value: function sendMessage(message) {
+      var _this2 = this;
+
+      var payload = {
+        id: this.props.id,
+        user: this.props.name,
+        message: message
+      };
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/send_message', payload).then(function (response) {
+        // clear form input
+        _this2.setState({
+          text: ''
+        });
+      })["catch"](function (error) {
+        _this2.setState({
+          errors: error.response.data.errors
+        });
+      });
     }
   }, {
     key: "render",
@@ -66496,29 +66336,29 @@ function (_React$Component) {
 /*!*************************************************!*\
   !*** ./resources/js/components/Helpers/Rand.js ***!
   \*************************************************/
-/*! exports provided: default */
+/*! exports provided: randName, randColor, randRange, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function _getName() {
-  var adjectives = ['red', 'green', 'blue', 'cyan', 'magenta', 'yellow', 'cool', 'chill', 'funny', 'bad', 'good', 'bitter', 'grumpy', 'happy', 'sad', 'quiet', 'skittish', 'shady', 'mysterious', 'wild', 'solitary', 'funky', 'fresh', 'withered', 'old', 'young', 'nervous', 'brave', 'proud', 'jumpy', 'alien', 'sleepy', 'hungry', 'confident', 'silent', 'loud', 'gloomy'];
-  var nouns = ['cat', 'dog', 'bird', 'lizard', 'horse', 'cow', 'pig', 'sheep', 'mouse', 'weed', 'tree', 'koala', 'bear', 'tiger', 'monkey', 'donkey', 'vulture', 'spider', 'crow'];
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "randName", function() { return randName; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "randColor", function() { return randColor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "randRange", function() { return randRange; });
+function randName() {
+  var adjectives = ['red', 'green', 'blue', 'cyan', 'magenta', 'yellow', 'cool', 'chill', 'funny', 'bad', 'good', 'bitter', 'spicy', 'sour', 'salty', 'grumpy', 'happy', 'sad', 'quiet', 'skittish', 'shady', 'mysterious', 'wild', 'solitary', 'funky', 'fresh', 'withered', 'old', 'young', 'nervous', 'brave', 'proud', 'jumpy', 'alien', 'sleepy', 'hungry', 'confident', 'silent', 'loud', 'gloomy'];
+  var nouns = ['cat', 'dog', 'bird', 'lizard', 'horse', 'cow', 'pig', 'sheep', 'mouse', 'weed', 'tree', 'koala', 'bear', 'tiger', 'monkey', 'donkey', 'vulture', 'spider', 'crow', 'adobo', 'sinigang', 'tinola'];
   return adjectives[Math.floor(Math.random() * adjectives.length)] + '_' + nouns[Math.floor(Math.random() * nouns.length)];
 }
-
-function _getColor() {
+function randColor() {
   return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
 }
-
-function _range(min, max) {
+function randRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-  getName: _getName,
-  getColor: _getColor,
-  range: _range
+  name: randName,
+  color: randColor,
+  range: randRange
 });
 
 /***/ }),
@@ -66717,9 +66557,10 @@ _serviceWorker__WEBPACK_IMPORTED_MODULE_4__["unregister"]();
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  pusherKey: '1eb6150caa6844f00321',
-  pusherCluster: 'ap1',
-  forceTLS: true
+  pusherKey: '05b571559e1d63f0860f',
+  pusherCluster: 'us2',
+  forceTLS: true,
+  defaultChannel: 'chat_channel'
 });
 
 /***/ }),
@@ -66933,8 +66774,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\xampp\htdocs\lab\chat_app\source\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\xampp\htdocs\lab\chat_app\source\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\xampp\htdocs\lab\chat_app_pub\source\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\xampp\htdocs\lab\chat_app_pub\source\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

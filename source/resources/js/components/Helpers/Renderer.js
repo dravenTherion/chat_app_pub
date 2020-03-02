@@ -70,6 +70,7 @@ function _renderCanvas(){
         _ctrBeforeUpdate.curr++;
     else
         _ctrBeforeUpdate.curr = 0;
+    
 }
 
 function _frame(frameOffsetX, frameOffsetY, frameWidth, frameHeight, framesMax, framesCurr){

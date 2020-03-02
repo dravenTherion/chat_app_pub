@@ -39,7 +39,7 @@ class ClientLeft implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['chat_channel'];
+        return [config('broadcasting.connections.pusher.options.defaultChannel')];
     }
     
     public function broadcastAs()

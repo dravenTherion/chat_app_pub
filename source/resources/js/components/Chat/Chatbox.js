@@ -5,7 +5,7 @@ import './../../../sass/Chatbox.scss'
 
 export default class Chatbox extends React.Component{
     
-    constructor(props) {
+    constructor(props){
         super(props);
         this.state = {
             text: '',
@@ -16,35 +16,40 @@ export default class Chatbox extends React.Component{
         this.handleTextChange = this.handleTextChange.bind(this);
     }
     
-    handleTextChange(e) {
+    handleTextChange(e){
         
         if (e.keyCode === 13 && this.state.text.trim().length > 0)
         {
-            const payload = {
-                id: this.props.id,
-                user: this.props.name,
-                message: this.state.text
-            };
             
-            //axios.post('http://localhost:5000/message', payload);
-            axios.post('api/send_message', payload)
-            .then(response=>{
-              // clear form input
-                this.setState({
-                    text: ''
-                });
-            })
-            .catch(error=>{
-                this.setState({
-                    errors: error.response.data.errors
-                })
-            })
-            
+            this.sendMessage(this.state.text);
         }
         else 
         {            
             this.setState({ text: e.target.value });
         }
+    }
+    
+    sendMessage(message){
+        
+        const payload = {
+            id: this.props.id,
+            user: this.props.name,
+            message: message
+        };
+            
+        axios.post('api/send_message', payload)
+             .then(response=>{
+                // clear form input
+                this.setState({
+                text: ''
+                });
+             })
+             .catch(error=>{
+                this.setState({
+                    errors: error.response.data.errors
+                })
+             });
+        
     }
     
     render(){

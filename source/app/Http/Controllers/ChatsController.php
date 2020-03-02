@@ -59,9 +59,9 @@ class ChatsController extends Controller
             'y' => $request->input('y'),
             'tx' => $request->input('x'), 
             'ty' => $request->input('y'),
-            'status' => 0,
+            'avatar' => $request->input('avatar'),
         ]);
-        
+
         event(new ClientJoined($request->input('id'), $request->input('user')));
         
         return 'client joined!';
@@ -70,7 +70,7 @@ class ChatsController extends Controller
     
     public function clientAll()
     {
-        $users = ChatUser::project(['_id'=>0])->get(['id', 'user', 'x', 'y', 'tx', 'ty']);
+        $users = ChatUser::project(['_id'=>0])->get(['id', 'user', 'x', 'y', 'tx', 'ty', 'avatar']);
         
         return $users;
     }

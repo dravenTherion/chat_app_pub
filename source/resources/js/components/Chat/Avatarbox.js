@@ -4,11 +4,10 @@ import axios from 'axios';
 import Pusher from 'pusher-js';
 
 import gsap from "gsap";
-import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 
 import Config from './../Settings/Config';
 
-import Rand from './../Helpers/Rand';
+import { randRange } from './../Helpers/Rand';
 import Renderer from './../Helpers/Renderer';
 
 import './../../../sass/Avatarbox.scss';
@@ -56,9 +55,6 @@ export default class Avatarbox extends React.Component{
         
         this.handleMessage = this.handleMessage.bind(this);
         
-        
-        gsap.registerPlugin(CSSRulePlugin);
-    
     }
         
     componentDidMount() { 
@@ -73,7 +69,7 @@ export default class Avatarbox extends React.Component{
         });
 
         
-        var channel = pusher.subscribe('chat_channel');
+        var channel = pusher.subscribe(Config.defaultChannel ? Config.defaultChannel : 'chat_channel');
         
         channel.bind('join_event', this.handleJoin);
         channel.bind('leave_event', this.handleLeave);        
@@ -84,8 +80,9 @@ export default class Avatarbox extends React.Component{
         const payload = {
             id: this.props.id,
             user: this.props.name,
-            x: Math.floor(Rand.range(this.width * 0.1, this.width * 0.9)),
-            y: Math.floor(Rand.range(this.height * 0.25, this.height * 0.75))
+            x: Math.floor(randRange(this.width * 0.1, this.width * 0.9)),
+            y: Math.floor(randRange(this.height * 0.25, this.height * 0.75)),
+            avatar: Math.floor(randRange(0, 1))
         }
 
         
@@ -132,7 +129,6 @@ export default class Avatarbox extends React.Component{
     handleMessage(data){
         
         const newActiveClients = [...this.state.activeClients];
-    
         const activeClientFound = newActiveClients.find((u)=>{ return data.id === u.id;});
         
         
@@ -146,7 +142,6 @@ export default class Avatarbox extends React.Component{
             
             gsap.killTweensOf(clientFound.dom.querySelector('.Avatarbox__message__bubble'));
             gsap.fromTo(clientFound.dom.querySelector('.Avatarbox__message__bubble'), 0.45, {scale: 0, autoAlpha: 0}, {scale: 1, autoAlpha: 1, ease: 'back.out(1)', repeat: 1, yoyo: true, repeatDelay: 20});
-            
         }
     
     }
@@ -180,24 +175,19 @@ export default class Avatarbox extends React.Component{
     
     handleUpdate(data){
         
+        if(data.isResponse && data.id === this.props.id)
+            return;
         
-        const clientFound = this.clients.find((u)=>{ return data.id === u.id;});
-        
-        const adjFactor = 1;
-        
-        const speed = 250,
+        const clientFound = this.clients.find((u)=>{ return data.id === u.id;}),
               
-              //deltaX = data.tx - (data.isResponse !== undefined ? data.x : clientFound.x),     
-              deltaX = data.tx - clientFound.x,//(data.isResponse !== undefined ? data.x : clientFound.x),     
-              //deltaY = data.ty - (data.isResponse !== undefined ? data.y : clientFound.y),
-              deltaY = data.ty - clientFound.y,//(data.isResponse !== undefined ? data.y : clientFound.y),
+              speed = 300,
+              
+              deltaX = data.tx - clientFound.x,     
+              deltaY = data.ty - clientFound.y,
               dist  = Math.sqrt((deltaX * deltaX) + (deltaY * deltaY)),
               
-              time  = dist / speed,
-              deltaTime = (Date.now() - this.tsUpdateRequest) / 1000,
-              
-              distXAtDeltaTime = data.x + ((data.id === this.props.id) ? (deltaTime / time) * deltaX * adjFactor : 0),
-              distYAtDeltaTime = data.y + ((data.id === this.props.id) ? (deltaTime / time) * deltaY * adjFactor : 0);
+              time  = dist / speed;
+        
         
         if(clientFound !== undefined)
         {
@@ -206,9 +196,6 @@ export default class Avatarbox extends React.Component{
             
             gsap.killTweensOf(clientFound);
             gsap.killTweensOf(clientFound.dom);
-            
-            gsap.set(clientFound, {x: distXAtDeltaTime, y: distYAtDeltaTime});
-            gsap.set(clientFound.dom, {x: distXAtDeltaTime, y: distYAtDeltaTime});
 
             gsap.to(clientFound, time, {x: data.tx, y: data.ty, ease: 'linear'});
             gsap.to(clientFound.dom, time, {x: data.tx, y: data.ty, ease: 'linear', 
@@ -260,7 +247,7 @@ export default class Avatarbox extends React.Component{
         const userFound = this.state.activeClients.find((u)=>{ return user.id === u.id;});
             
         if(userFound === undefined)
-            this.setState({activeClients: [...this.state.activeClients, {id: user.id, user: user.user, message: ''}]});
+            this.setState({activeClients: [...this.state.activeClients, {id: user.id, user: user.user, message: '', avatar: user.avatar}]});
         
         
         const clientFound = this.clients.find((u)=>{ return user.id === u.id;});
@@ -275,20 +262,24 @@ export default class Avatarbox extends React.Component{
     
     /** ADD CLIENT DOM REFERENCE **/
     
-    addReference(id, element){
-        
+    addReference(client, element){
+
+        const frameWidth = 95,
+              frameHeight = 150;
+
+        const id = client.id;
         const found = this.clients.find((u)=>{ return id === u.id;});
             
         if(found === undefined)
         {
             const avatar = {
                 id: id, 
-                dom:element, 
+                dom: element, 
                 x: 0, 
                 y: 0,
-                frames: [ 
-                    new Renderer.frame(0, 0, 95, 150, 30, Math.floor(Rand.range(0, 29))),
-                    new Renderer.frame(95, 0, 95, 150, 20, Math.floor(Rand.range(0, 19)))
+                frames: [
+                    new Renderer.frame((client.avatar * frameWidth * 2), 0, frameWidth, frameHeight, 30, Math.floor(randRange(0, 29))),
+                    new Renderer.frame((client.avatar * frameWidth * 2 + frameWidth), 0, frameWidth, frameHeight, 20, 0)
                 ],
                 currentFrameSet: 0,
                 direction: 1
@@ -328,18 +319,18 @@ export default class Avatarbox extends React.Component{
                 <canvas width={this.width} height={this.height} className="Avatarbox__canvas" ref={canvas=>this.canvas=canvas}>
                 </canvas>
                 <ul>
-                    {this.state.activeClients.map(user=>{
+                    {this.state.activeClients.map(client=>{
                         
                         return(                            
-                            <div className="Avatarbox__message" key={user.id} ref={div=>this.addReference(user.id, div)}>
+                            <div className="Avatarbox__message" key={client.id} ref={div=>this.addReference(client, div)}>
             
-                                <p className={'Avatarbox__message__bubble' + (user.id === this.props.id ? ' own' : '')}>
+                                <p className={'Avatarbox__message__bubble' + (client.id === this.props.id ? ' own' : '')}>
                                     <span className="Avatarbox_bubble__inner">
-                                        {user.message}
+                                        {client.message}
                                     </span>
                                 </p>                
                                 
-                                <p className={'Avatarbox__message__name' + (user.id === this.props.id ? ' own' : '')}>{user.user}</p>
+                                <p className={'Avatarbox__message__name' + (client.id === this.props.id ? ' own' : '')}>{client.user}</p>
 
                             </div>
                         )

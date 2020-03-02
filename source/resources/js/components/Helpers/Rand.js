@@ -1,4 +1,4 @@
-function _getName(){
+export function randName(){
     
     const adjectives = [
                         'red', 
@@ -12,7 +12,10 @@ function _getName(){
                         'funny', 
                         'bad', 
                         'good', 
-                        'bitter', 
+                        'bitter',
+                        'spicy',
+                        'sour',
+                        'salty',
                         'grumpy', 
                         'happy',
                         'sad',
@@ -38,6 +41,7 @@ function _getName(){
                         'silent',
                         'loud',
                         'gloomy',
+                        
                        ];
     
     const nouns = [
@@ -60,6 +64,9 @@ function _getName(){
                     'vulture',
                     'spider',
                     'crow',
+                    'adobo',
+                    'sinigang',
+                    'tinola',
                   ]
     
     
@@ -72,19 +79,20 @@ function _getName(){
 }
 
 
-function _getColor() {
+export function randColor() {
     return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
 }
 
 
-function _range(min, max){
+export function randRange(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+
 export default ({
-    
-    getName: _getName,
-    getColor: _getColor,
-    range: _range
-    
+
+    name: randName,
+    color: randColor,
+    range: randRange
+
 });

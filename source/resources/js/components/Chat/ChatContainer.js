@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 
-import Rand from './../Helpers/Rand'
+import { randName } from './../Helpers/Rand'
 
 import Chatbox from './Chatbox';
 import Avatarbox from './Avatarbox';
@@ -17,7 +16,7 @@ export default class ChatContainer extends React.Component{
             user: '',
         };
         
-        this.name = Rand.getName();
+        this.name = randName();
         this.id = this.name + '_' + Date.now();
     }
     

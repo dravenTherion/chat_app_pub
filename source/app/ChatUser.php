@@ -11,6 +11,6 @@ class ChatUser extends Eloquent
     protected $collection = 'active_users';
     
     protected $fillable = [
-        'id', 'user', 'x', 'y', 'tx', 'ty', 'status'
+        'id', 'user', 'x', 'y', 'tx', 'ty', 'avatar'
     ];
 }
