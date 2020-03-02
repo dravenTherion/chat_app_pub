@@ -65846,43 +65846,51 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
+      this.initializePusher();
       this.handleResize();
       window.addEventListener('resize', this.handleResize);
-      var pusher = new pusher_js__WEBPACK_IMPORTED_MODULE_2___default.a(_Settings_Config__WEBPACK_IMPORTED_MODULE_4__["default"].pusherKey, {
-        cluster: _Settings_Config__WEBPACK_IMPORTED_MODULE_4__["default"].pusherCluster,
-        forceTLS: _Settings_Config__WEBPACK_IMPORTED_MODULE_4__["default"].forceTLS
+      window.addEventListener('unload', function (e) {
+        var data = 'id=' + _this2.props.id;
+        navigator.sendBeacon('api/client_leave?' + data);
       });
-      var channel = pusher.subscribe(_Settings_Config__WEBPACK_IMPORTED_MODULE_4__["default"].defaultChannel ? _Settings_Config__WEBPACK_IMPORTED_MODULE_4__["default"].defaultChannel : 'chat_channel');
-      channel.bind('join_event', this.handleJoin);
-      channel.bind('leave_event', this.handleLeave);
-      channel.bind('update_event', this.handleUpdate);
-      channel.bind('message_event', this.handleMessage);
-      var payload = {
-        id: this.props.id,
-        user: this.props.name,
-        x: Math.floor(Object(_Helpers_Rand__WEBPACK_IMPORTED_MODULE_5__["randRange"])(this.width * 0.1, this.width * 0.9)),
-        y: Math.floor(Object(_Helpers_Rand__WEBPACK_IMPORTED_MODULE_5__["randRange"])(this.height * 0.25, this.height * 0.75)),
-        avatar: Math.floor(Object(_Helpers_Rand__WEBPACK_IMPORTED_MODULE_5__["randRange"])(0, 1))
-      };
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/client_join', payload)["catch"](function (error) {
-        _this2.setState({
-          errors: error.response.data.errors
-        });
-      });
-      window.addEventListener('load', function (e) {
-        //window.addEventListener('beforeunload', this.handleLeave);
-        window.addEventListener('unload', function (e) {
-          var data = 'id=' + _this2.props.id;
-          navigator.sendBeacon('api/client_leave?' + data);
-        });
-      });
-      _Helpers_Renderer__WEBPACK_IMPORTED_MODULE_6__["default"].init(this.canvas, this.clients, _img_spritesheet_png__WEBPACK_IMPORTED_MODULE_8___default.a);
-      gsap__WEBPACK_IMPORTED_MODULE_3__["default"].ticker.add(_Helpers_Renderer__WEBPACK_IMPORTED_MODULE_6__["default"].renderCanvas);
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       window.removeEventListener('resize', this.handleResize);
+    }
+    /** INITIALIZE PUSHER **/
+
+  }, {
+    key: "initializePusher",
+    value: function initializePusher() {
+      var _this3 = this;
+
+      var pusher = new pusher_js__WEBPACK_IMPORTED_MODULE_2___default.a(_Settings_Config__WEBPACK_IMPORTED_MODULE_4__["default"].pusherKey, {
+        cluster: _Settings_Config__WEBPACK_IMPORTED_MODULE_4__["default"].pusherCluster,
+        forceTLS: _Settings_Config__WEBPACK_IMPORTED_MODULE_4__["default"].forceTLS
+      }),
+          channel = pusher.subscribe(_Settings_Config__WEBPACK_IMPORTED_MODULE_4__["default"].defaultChannel ? _Settings_Config__WEBPACK_IMPORTED_MODULE_4__["default"].defaultChannel : 'chat_channel');
+      channel.bind('join_event', this.handleJoin);
+      channel.bind('leave_event', this.handleLeave);
+      channel.bind('update_event', this.handleUpdate);
+      channel.bind('message_event', this.handleMessage);
+      channel.bind('pusher:subscription_succeeded', function (e) {
+        var payload = {
+          id: _this3.props.id,
+          user: _this3.props.name,
+          x: Math.floor(Object(_Helpers_Rand__WEBPACK_IMPORTED_MODULE_5__["randRange"])(_this3.width * 0.1, _this3.width * 0.9)),
+          y: Math.floor(Object(_Helpers_Rand__WEBPACK_IMPORTED_MODULE_5__["randRange"])(_this3.height * 0.25, _this3.height * 0.75)),
+          avatar: Math.floor(Object(_Helpers_Rand__WEBPACK_IMPORTED_MODULE_5__["randRange"])(0, 1))
+        };
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/client_join', payload)["catch"](function (error) {
+          _this3.setState({
+            errors: error.response.data.errors
+          });
+        });
+        _Helpers_Renderer__WEBPACK_IMPORTED_MODULE_6__["default"].init(_this3.canvas, _this3.clients, _img_spritesheet_png__WEBPACK_IMPORTED_MODULE_8___default.a);
+        gsap__WEBPACK_IMPORTED_MODULE_3__["default"].ticker.add(_Helpers_Renderer__WEBPACK_IMPORTED_MODULE_6__["default"].renderCanvas);
+      });
     }
     /** HANDLE WINDOW RESIZE **/
 
@@ -65950,19 +65958,19 @@ function (_React$Component) {
   }, {
     key: "handleUpdate",
     value: function handleUpdate(data) {
-      var _this3 = this;
+      var _this4 = this;
 
       if (data.isResponse && data.id === this.props.id) return;
       var clientFound = this.clients.find(function (u) {
         return data.id === u.id;
-      }),
-          speed = 300,
-          deltaX = data.tx - clientFound.x,
-          deltaY = data.ty - clientFound.y,
-          dist = Math.sqrt(deltaX * deltaX + deltaY * deltaY),
-          time = dist / speed;
+      });
 
       if (clientFound !== undefined) {
+        var speed = 300,
+            deltaX = data.tx - clientFound.x,
+            deltaY = data.ty - clientFound.y,
+            dist = Math.sqrt(deltaX * deltaX + deltaY * deltaY),
+            time = dist / speed;
         clientFound.direction = data.tx < data.x ? -1 : 1;
         clientFound.currentFrameSet = 1;
         gsap__WEBPACK_IMPORTED_MODULE_3__["default"].killTweensOf(clientFound);
@@ -65979,13 +65987,13 @@ function (_React$Component) {
           onComplete: function onComplete(t) {
             t.currentFrameSet = 0;
 
-            if (t.id === _this3.props.id) {
+            if (t.id === _this4.props.id) {
               var payload = {
-                id: _this3.props.id,
-                x: _this3.Avatar.x,
-                y: _this3.Avatar.y,
-                tx: _this3.Avatar.x,
-                ty: _this3.Avatar.y,
+                id: _this4.props.id,
+                x: _this4.Avatar.x,
+                y: _this4.Avatar.y,
+                tx: _this4.Avatar.x,
+                ty: _this4.Avatar.y,
                 trigger: false
               };
               axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/send_update', payload);
@@ -66000,13 +66008,13 @@ function (_React$Component) {
   }, {
     key: "handleJoin",
     value: function handleJoin(data) {
-      var _this4 = this;
+      var _this5 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('api/client_all').then(function (response) {
         var data = response.data;
 
         for (var ctr = 0; ctr < data.length; ctr++) {
-          _this4.addClient(data[ctr]);
+          _this5.addClient(data[ctr]);
         }
       });
     }
@@ -66082,14 +66090,14 @@ function (_React$Component) {
       this.clients = this.clients.filter(function (u) {
         return u.id !== data.id;
       });
-      _Helpers_Renderer__WEBPACK_IMPORTED_MODULE_6__["default"].setList(this.clients); //console.log('left', data);
+      _Helpers_Renderer__WEBPACK_IMPORTED_MODULE_6__["default"].setList(this.clients);
     }
     /** RENDER CANVAS **/
 
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this6 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "Avatarbox",
@@ -66100,21 +66108,21 @@ function (_React$Component) {
         height: this.height,
         className: "Avatarbox__canvas",
         ref: function ref(canvas) {
-          return _this5.canvas = canvas;
+          return _this6.canvas = canvas;
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.activeClients.map(function (client) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "Avatarbox__message",
           key: client.id,
           ref: function ref(div) {
-            return _this5.addReference(client, div);
+            return _this6.addReference(client, div);
           }
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: 'Avatarbox__message__bubble' + (client.id === _this5.props.id ? ' own' : '')
+          className: 'Avatarbox__message__bubble' + (client.id === _this6.props.id ? ' own' : '')
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "Avatarbox_bubble__inner"
         }, client.message)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          className: 'Avatarbox__message__name' + (client.id === _this5.props.id ? ' own' : '')
+          className: 'Avatarbox__message__name' + (client.id === _this6.props.id ? ' own' : '')
         }, client.user));
       })));
     }

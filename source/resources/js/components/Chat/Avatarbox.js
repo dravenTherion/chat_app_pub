@@ -58,58 +58,64 @@ export default class Avatarbox extends React.Component{
     }
         
     componentDidMount() { 
-        
+                
+        this.initializePusher();
         this.handleResize();
         window.addEventListener('resize', this.handleResize);
+        window.addEventListener('unload', (e)=>{
+            const data = 'id=' + this.props.id;
+            navigator.sendBeacon('api/client_leave?' + data);
+        });
         
+    }
+
+    componentWillUnmount() { 
+        window.removeEventListener('resize', this.handleResize);
+    }
+    
+    
+    /** INITIALIZE PUSHER **/
+    
+    initializePusher(){
         
-        var pusher = new Pusher(Config.pusherKey, {
+        const pusher = new Pusher(Config.pusherKey, {
             cluster: Config.pusherCluster,
             forceTLS: Config.forceTLS
-        });
-
-        
-        var channel = pusher.subscribe(Config.defaultChannel ? Config.defaultChannel : 'chat_channel');
+        }),
+              
+        channel = pusher.subscribe(Config.defaultChannel ? Config.defaultChannel : 'chat_channel');
         
         channel.bind('join_event', this.handleJoin);
         channel.bind('leave_event', this.handleLeave);        
         channel.bind('update_event', this.handleUpdate);        
         
         channel.bind('message_event', this.handleMessage);                
-
-        const payload = {
-            id: this.props.id,
-            user: this.props.name,
-            x: Math.floor(randRange(this.width * 0.1, this.width * 0.9)),
-            y: Math.floor(randRange(this.height * 0.25, this.height * 0.75)),
-            avatar: Math.floor(randRange(0, 1))
-        }
-
         
-        axios.post('api/client_join', payload)
-        .catch(error=>{
-            this.setState({
-                errors: error.response.data.errors
-            });
+        channel.bind('pusher:subscription_succeeded', (e)=>{
+           
+            const payload = {
+                id: this.props.id,
+                user: this.props.name,
+                x: Math.floor(randRange(this.width * 0.1, this.width * 0.9)),
+                y: Math.floor(randRange(this.height * 0.25, this.height * 0.75)),
+                avatar: Math.floor(randRange(0, 1))
+            }
+
+            axios.post('api/client_join', payload)
+                 .catch(error=>{
+                
+                    this.setState({
+                        errors: error.response.data.errors
+                    });
+                
+                 });
+
+
+            Renderer.init(this.canvas, this.clients, spritesheet);
+            gsap.ticker.add(Renderer.renderCanvas);
+            
         });
         
-        window.addEventListener('load', (e)=>{
-            //window.addEventListener('beforeunload', this.handleLeave);
-            window.addEventListener('unload', (e)=>{
-                const data = 'id=' + this.props.id;
-                navigator.sendBeacon('api/client_leave?' + data);
-            });
-        });    
-        
-        
-        Renderer.init(this.canvas, this.clients, spritesheet);
-        
-        gsap.ticker.add(Renderer.renderCanvas);
-        
-    }
-
-    componentWillUnmount() { 
-        window.removeEventListener('resize', this.handleResize);
     }
     
     
@@ -178,19 +184,20 @@ export default class Avatarbox extends React.Component{
         if(data.isResponse && data.id === this.props.id)
             return;
         
-        const clientFound = this.clients.find((u)=>{ return data.id === u.id;}),
+        const clientFound = this.clients.find((u)=>{ return data.id === u.id;});
               
-              speed = 300,
-              
-              deltaX = data.tx - clientFound.x,     
-              deltaY = data.ty - clientFound.y,
-              dist  = Math.sqrt((deltaX * deltaX) + (deltaY * deltaY)),
-              
-              time  = dist / speed;
-        
         
         if(clientFound !== undefined)
-        {
+        {            
+            const speed = 300,
+              
+                  deltaX = data.tx - clientFound.x,     
+                  deltaY = data.ty - clientFound.y,
+                  dist  = Math.sqrt((deltaX * deltaX) + (deltaY * deltaY)),
+              
+                  time  = dist / speed;
+            
+            
             clientFound.direction = data.tx < data.x ? -1 : 1;
             clientFound.currentFrameSet = 1;
             
@@ -305,8 +312,6 @@ export default class Avatarbox extends React.Component{
         this.clients = this.clients.filter((u)=>{return u.id !== data.id;});
         
         Renderer.setList(this.clients);
-            
-        //console.log('left', data);
         
     }
     
