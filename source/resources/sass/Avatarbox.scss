@@ -1,6 +1,7 @@
 @import 'Variables.scss';
+@import 'Mixins.scss';
 
-#Avatarbox{
+#AvatarBox{
     
     width: 100%;
     height: 100%;
@@ -20,7 +21,7 @@
 
             position: absolute;
 
-            font-size: 12px;
+            font-size: $fontSize--main;
 
         }
 
@@ -33,67 +34,59 @@
             text-align: center;
 
             transform: translateX(-68%);
+            
+            color: $fontColorDark--generic;
+            
+            .inner{
+                padding: 2px;
+                background-color: rgba(white, 0.5);
+                
+                border-radius: $cornerRadius--small;
+            }
+            
+            &.own{
 
-        }
+                font-weight: bold;
+                color: $fontColorDark--own;
 
-        .Avatarbox__message__name.own{
-
-            font-weight: bold;
-            color: $fontColor--own;
+            }
 
         }
 
         .Avatarbox__message__bubble{
 
+            @include make-bubble($cornerRadius--big, $bubbleColor--generic, $fontColor, $bubbleBoxShadow, bottom, 12px, 17px, 0px, 0px, auto, 18px, auto, 0px);
+            
             display: inline-block;
 
-            min-width: 75px;
+            min-width: 150px;
             max-width: 275px;
 
             bottom: 70px;
 
             padding: 13px;
 
-            border-radius: $cornerRadius--huge;
-            box-sizing: border-box;
-
-            transform: translateX(-60%);
+            transform: translateX(-50%);
             transform-origin: center bottom;
 
-            background-color: $bubbleColor--generic;
-            box-shadow: 0px 5px 2px 0px rgba(0, 0, 0, 0.25);
-
-            color: $fontColor;
-
             visibility: hidden;
-
-            :after{
-
-                content: '';
-                display: block;
-                position: absolute;
-
-                width: 0;
-                height: 0;
-
-                left: 0px;
-                right: 0px;
+            
+            text-align: justify;
+            
+            &:after{
+                
                 margin: 0px auto;
-
-                border-style: solid;
-                border-width: 25px 35px 0 0px;
-                border-color: $bubbleColor--generic transparent transparent transparent;
-
+            
             }
+            
+            &.own{
 
-        }
+                background-color: $bubbleColor--own;
 
-        .Avatarbox__message__bubble.own{
+                &:after{
+                    border-color: $bubbleColor--own transparent transparent transparent;
+                }
 
-            background-color: $bubbleColor--own;
-
-            :after{
-                border-color: $bubbleColor--own transparent transparent transparent;
             }
 
         }

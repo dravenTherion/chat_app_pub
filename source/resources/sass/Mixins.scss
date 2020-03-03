@@ -1,0 +1,100 @@
+/** RESET PSEUDO ELEMENT **/
+
+@mixin reset-pseudo{
+
+    content: '';
+    display: block;
+    position: absolute;
+
+}
+
+@mixin add-click-area($size){
+    
+    &:after{   
+        @include reset-pseudo;
+        
+        width: 100%;
+        height: 100%;
+        
+        padding: $size;
+        left: -$size;
+        top: -$size;
+    }
+    
+}
+
+
+/** CONVERT ELEMENT INTO A TRIANGLE **/
+
+@mixin make-triangle($direction: top, $color: #000, $sizeTop: 0, $sizeRight: 0, $sizeBottom: 0, $sizeLeft: 0){
+    
+    border: solid transparent;
+    border-width: $sizeTop $sizeRight $sizeBottom $sizeLeft;
+    
+    width: 0px;
+    height: 0px;
+    
+    @if $direction == top{
+        border-bottom-color: $color;
+    } @else if $direction == right{
+        border-left-color: $color;
+    } @else if $direction == bottom{
+        border-top-color: $color;
+    } @else if $direction == left{
+        border-right-color: $color;
+    } @else{
+        @error "Unknown direction #{$direction}.";
+    }
+    
+}
+
+
+/** CONVERT ELEMENT INTO A SPEECH BUBBLE **/
+@mixin make-bubble( $cornerRadius: 0px, $bubbleColor: #000, $fontColor: #FFF, $boxShadow: none,
+                    $tailDirection: top, $tailSizeTop: 0px, $tailSizeRight: 0px, $tailSizeBottom: 0px, $tailSizeLeft: 0px,
+                    $tailTop: auto, $tailRight: auto, $tailBottom: auto, $tailLeft: auto){
+    
+    &:after{
+        
+        @include reset-pseudo;
+        @include make-triangle($tailDirection, $bubbleColor, $tailSizeTop, $tailSizeRight, $tailSizeBottom, $tailSizeLeft);
+        
+        @if $tailDirection == top{
+            
+            bottom: 100%;
+            left: $tailLeft;
+            right: $tailRight;
+        
+        } @else if $tailDirection == right{
+            
+            left: 100%;
+            top: $tailTop;
+            bottom: $tailBottom;
+        
+        } @else if $tailDirection == bottom{
+            
+            top: 100%;
+            left: $tailLeft;
+            right: $tailRight;
+        
+        } @else if $tailDirection == left{
+            
+            right: 100%;
+            top: $tailTop;
+            bottom: $tailBottom;
+        
+        } @else{
+            @error "Unknown direction #{$direction}.";
+        }
+        
+    }
+                        
+    border-radius: $cornerRadius;
+    box-shadow: $boxShadow;
+    background-color: $bubbleColor;
+    color: $fontColor;     
+                        
+    box-sizing: border-box;
+    word-wrap: break-word;
+                        
+}

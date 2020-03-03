@@ -15,11 +15,18 @@ class MessageSent implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * User that sent the message
+     * Message id
      *
      * @var Id
      */
     public $id;
+
+    /**
+     * User that sent the message
+     *
+     * @var user_id
+     */
+    public $user_id;
 
     /**
      * User name
@@ -40,9 +47,10 @@ class MessageSent implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct($id, $user, $message)
+    public function __construct($id, $user_id, $user, $message)
     {
         $this->id = $id;
+        $this->user_id = $user_id;
         $this->user = $user;
         $this->message = $message;
     }

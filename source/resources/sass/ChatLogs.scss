@@ -1,0 +1,253 @@
+@import 'Variables.scss';
+@import 'Mixins.scss';
+
+
+#ChatLogs{
+    
+    position: absolute;
+    display: block;
+    
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    
+    margin: 0px auto;
+    
+    min-width: $chatBoxMinWidth;
+    width: $chatBoxWidth;
+    height: 40%;
+    
+    border-top-left-radius: $cornerRadius--medium;
+    border-top-right-radius: $cornerRadius--medium;
+    
+    background-color: rgba($primaryColor, 0.85);
+    
+    z-index: 2;
+    
+    font-family: $fontStack;
+    
+    transition: height .3s $primaryBezierOut;
+        
+    
+    .ChatLogs__pullout{
+        
+        @include add-click-area(10px);
+        
+        width: 30px;
+        height: 25px;
+        
+        right: 0px;
+        top: 0px;
+        
+        border-top-right-radius: $cornerRadius--big;
+        border-top-left-radius: $cornerRadius--big;
+        
+        background-color: $accentColor;
+            
+        transform: translateY(-90%);
+        
+        cursor: pointer;
+        
+        transition: background-color 0.3s;
+        
+        &:hover{
+            background-color: lighten($accentColor, 10%);
+        }
+        
+        .inner{
+            
+            display: block;
+            
+            width: 100%;
+            height: 100%;
+            
+            &:before,
+            &:after{
+                
+                @include reset-pseudo;
+                
+                width: 2px;
+                height: 10px;
+                
+                top: 0px;
+                right: 0px;
+                bottom: 0px;
+                left: 0px;
+                
+                margin: auto;
+                
+                border-radius: $cornerRadius--small;
+                
+                background-color: $fontColor;
+                
+                transform-origin: center center;
+                
+                transform: rotate(90deg);
+                
+            }
+            
+            &:before{
+            
+                transition: transform 0.35s;
+                
+            }
+            
+        }
+        
+        &.collapsed{
+            
+            .inner:before{
+                transform: rotate(0deg);
+            }
+            
+        }
+        
+    }
+    
+    .ChatLogs__container{
+    
+        width: 97%;
+        height: calc(97% - #{$chatBoxHeight});
+        
+        top: 3%;
+        left: 0px;
+        right: 0px;
+        
+        margin: 0px auto;
+        padding: 40px 0px 0px 0px;
+        
+        background-color: rgba(white, 0.7);
+        
+        border-top-right-radius: $cornerRadius--small;
+        border-top-left-radius: $cornerRadius--small;
+        
+        box-sizing: border-box;
+        overflow-y: scroll;
+        
+        font-size: $fontSize--main;
+        
+        
+        .ChatLogs__message{
+            
+            position: relative;
+            display: inline-block;
+            
+            width: 100%;
+            
+            margin: 10px 0px 20px 0px;
+            
+            border-radius: $cornerRadius--medium;
+            
+            .ChatLogs__message__inner{
+                
+                position: inherit;
+                
+                max-width: $messageMaxWidth;
+                left: $sideSpacing;
+                
+                float: left;
+                
+                .user_id{
+                    
+                    display: inline-block;
+                    transform: translateY(-100%);
+                    
+                    .name,
+                    .id{
+                        display: block;
+                    }
+                    
+                    .name{
+                        color: darken($fontColorDark--generic, 10%);
+                    }
+                    
+                    .id{
+                        font-size: $fontSize--small;
+                        color: $fontColorDark--generic;
+                    }
+                    
+                }
+                
+                .body{
+                    
+                    width: 100%;
+
+                    @include make-bubble($cornerRadius--big, $bubbleColor--generic, $fontColor, $bubbleBoxShadow, left, 0px, 5px, 10px, 0px, 5px);
+                    
+                    border-top-left-radius: 0px;
+                    
+                    margin: 5px 0px 10px 0px;
+                    padding: 10px;
+                    
+                    .segment{
+                        
+                        display: block;
+                        padding: 5px 0px;
+                        
+                        &:first-child{
+                            padding-top: 0px;
+                        }
+                        
+                        &:last-child{
+                            padding-bottom: 0px;
+                        }
+                        
+                    }
+
+                }
+                
+            }
+            
+            
+            &.own{
+                    
+                .ChatLogs__message__inner{
+
+                    left: auto;
+                    right: $sideSpacing;
+
+                    float: right;
+
+                    .user_id{
+
+                        right: 0px;
+
+                        .name,
+                        .id{
+
+                            float: right;
+                            clear: right;
+                        }
+
+                        .name{
+                            color: darken($fontColorDark--own, 10%);
+                        }
+
+                        .id{
+                            color: $fontColorDark--own;
+                        }              
+
+                    }
+
+                    .body{
+
+                        @include make-bubble($cornerRadius--big, $bubbleColor--own, $fontColor, $bubbleBoxShadow, right, 0px, 0px, 10px, 5px, 5px);
+
+                        border-top-right-radius: 0px;
+
+                    }
+                }
+
+            }   
+            
+        }
+
+    }
+    
+}
+
+#ChatLogs.collapsed{
+    
+    height: $chatBoxHeight;
+
+}

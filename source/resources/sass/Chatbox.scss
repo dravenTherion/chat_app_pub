@@ -1,7 +1,6 @@
-@import 'Normalize.scss';
 @import 'Variables.scss';
 
-#Chatbox{
+#ChatBox{
     
     position: absolute;
     display: block;
@@ -12,18 +11,19 @@
     
     margin: 0px auto;
     
-    width: 40%;
-    height: 50px;
+    min-width: $chatBoxMinWidth;
+    width: $chatBoxWidth;
+    height: $chatBoxHeight;
     
-    border-top-left-radius: $cornerRadius--med;
-    border-top-right-radius: $cornerRadius--med;
+    border-top-left-radius: $cornerRadius--medium;
+    border-top-right-radius: $cornerRadius--medium;
     
     background-color: $primaryColor;
     
     z-index: 2;
     
     
-    .Chatbox__textbox{
+    .ChatBox__textbox{
     
         position: absolute;
         display: block;

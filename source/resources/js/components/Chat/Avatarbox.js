@@ -10,12 +10,12 @@ import Config from './../Settings/Config';
 import { randRange } from './../Helpers/Rand';
 import Renderer from './../Helpers/Renderer';
 
-import './../../../sass/Avatarbox.scss';
+import './../../../sass/AvatarBox.scss';
 
 import spritesheet from './../../../img/spritesheet.png';
 
 
-export default class Avatarbox extends React.Component{
+export default class AvatarBox extends React.Component{
     
     constructor(props) {
         super(props);
@@ -60,8 +60,10 @@ export default class Avatarbox extends React.Component{
     componentDidMount() { 
                 
         this.initializePusher();
+        
         this.handleResize();
         window.addEventListener('resize', this.handleResize);
+        
         window.addEventListener('unload', (e)=>{
             const data = 'id=' + this.props.id;
             navigator.sendBeacon('api/client_leave?' + data);
@@ -135,7 +137,7 @@ export default class Avatarbox extends React.Component{
     handleMessage(data){
         
         const newActiveClients = [...this.state.activeClients];
-        const activeClientFound = newActiveClients.find((u)=>{ return data.id === u.id;});
+        const activeClientFound = newActiveClients.find((u)=>{ return data.user_id === u.id;});
         
         
         if(activeClientFound !== undefined)
@@ -144,7 +146,7 @@ export default class Avatarbox extends React.Component{
             
             this.setState({activeClients: newActiveClients});
                 
-            const clientFound = this.clients.find((u)=>{ return data.id === u.id;});
+            const clientFound = this.clients.find((u)=>{ return data.user_id === u.id;});
             
             gsap.killTweensOf(clientFound.dom.querySelector('.Avatarbox__message__bubble'));
             gsap.fromTo(clientFound.dom.querySelector('.Avatarbox__message__bubble'), 0.45, {scale: 0, autoAlpha: 0}, {scale: 1, autoAlpha: 1, ease: 'back.out(1)', repeat: 1, yoyo: true, repeatDelay: 20});
@@ -254,8 +256,16 @@ export default class Avatarbox extends React.Component{
         const userFound = this.state.activeClients.find((u)=>{ return user.id === u.id;});
             
         if(userFound === undefined)
-            this.setState({activeClients: [...this.state.activeClients, {id: user.id, user: user.user, message: '', avatar: user.avatar}]});
-        
+        {
+            const newUser = {
+                             id: user.id, 
+                             user: user.user, 
+                             message: '', 
+                             avatar: user.avatar
+                            }
+            
+            this.setState({activeClients: [...this.state.activeClients, newUser]});
+        }
         
         const clientFound = this.clients.find((u)=>{ return user.id === u.id;});
         
@@ -320,22 +330,24 @@ export default class Avatarbox extends React.Component{
     
     render(){
         return(
-            <div id="Avatarbox" className={this.state.status} onClick={this.handleClick}>
+            <div id="AvatarBox" className={this.state.status} onClick={this.handleClick}>
                 <canvas width={this.width} height={this.height} className="Avatarbox__canvas" ref={canvas=>this.canvas=canvas}>
                 </canvas>
                 <ul>
                     {this.state.activeClients.map(client=>{
                         
                         return(                            
-                            <div className="Avatarbox__message" key={client.id} ref={div=>this.addReference(client, div)}>
+                            <div className="Avatarbox__message" key={client.id} ref={(element)=>this.addReference(client, element)}>
             
                                 <p className={'Avatarbox__message__bubble' + (client.id === this.props.id ? ' own' : '')}>
-                                    <span className="Avatarbox_bubble__inner">
+                                    <span className="inner">
                                         {client.message}
                                     </span>
                                 </p>                
                                 
-                                <p className={'Avatarbox__message__name' + (client.id === this.props.id ? ' own' : '')}>{client.user}</p>
+                                <p className={'Avatarbox__message__name' + (client.id === this.props.id ? ' own' : '')}>
+                                    <span className="inner">{client.user}</span>
+                                </p>
 
                             </div>
                         )

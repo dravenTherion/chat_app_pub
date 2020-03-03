@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 */
 
 
-//Route::get('messages', 'ChatsController@fetchMessages');
+Route::get('messages', 'ChatsController@fetchMessages');
 Route::post('send_message', 'ChatsController@sendMessage');
 Route::post('send_update', 'ChatsController@sendUpdate');
 
@@ -28,6 +28,3 @@ Route::post('client_join', 'ChatsController@clientJoin');
 Route::post('client_leave', 'ChatsController@clientLeave');
 
 Route::get('client_all', 'ChatsController@clientAll');
-
-/** this is for testing purposes only, remove on deployment **/
-//Route::get('client_clear', 'ChatsController@clientClear');

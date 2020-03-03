@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-import './../../../sass/Chatbox.scss'
+import './../../../sass/ChatBox.scss'
 
-export default class Chatbox extends React.Component{
+export default class ChatBox extends React.Component{
     
     constructor(props){
         super(props);
@@ -11,26 +11,32 @@ export default class Chatbox extends React.Component{
             text: '',
             chats: [],
             errors: [],
+            ready: true
         };
+        
+        this.textInput = null;
         
         this.handleTextChange = this.handleTextChange.bind(this);
     }
     
-    handleTextChange(e){
+    /** HANDLE CHAT INPUT CHANGE **/
+    
+    handleTextChange(event){
         
-        if (e.keyCode === 13 && this.state.text.trim().length > 0)
-        {
-            
+        if (event.keyCode === 13 && this.state.text.trim().length > 0)
             this.sendMessage(this.state.text);
-        }
         else 
-        {            
-            this.setState({ text: e.target.value });
-        }
+            this.setState({ text: event.target.value });
+        
     }
+    
+    /** SEND CHAT MESSAGE **/
     
     sendMessage(message){
         
+        if(!this.state.ready)
+            return;
+            
         const payload = {
             id: this.props.id,
             user: this.props.name,
@@ -39,16 +45,26 @@ export default class Chatbox extends React.Component{
             
         axios.post('api/send_message', payload)
              .then(response=>{
+                
                 // clear form input
                 this.setState({
-                text: ''
+                    text: '',
+                    ready: true
                 });
+            
+                this.textInput.focus();
+
              })
              .catch(error=>{
                 this.setState({
-                    errors: error.response.data.errors
+                    
+                    errors: error.response.data.errors,
+                    ready: true
                 })
              });
+        
+        
+        this.setState({ready: false});
         
     }
     
@@ -56,16 +72,19 @@ export default class Chatbox extends React.Component{
     
         return(
 
-            <div id="Chatbox">
-            <input
-                type="text"
-                value={this.state.text}
-                placeholder="type message here..."
-                className="Chatbox__textbox"
-                onChange={this.handleTextChange}
-                onKeyDown={this.handleTextChange}
-                maxLength="250"
-            />
+            <div id="ChatBox">
+                <input
+                    type = "text"
+                    value = {this.state.text}
+                    placeholder = "Type your message here..."
+                    className = "ChatBox__textbox"
+                    onChange = {this.handleTextChange}
+                    onKeyDown = {this.handleTextChange}
+                    maxLength = "250"
+                    disabled = {!this.state.ready}
+            
+                    ref={(element)=>{this.textInput = element;}}
+                />
             </div>
 
         )
