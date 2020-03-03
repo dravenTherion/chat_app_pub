@@ -3795,9 +3795,9 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/sass/Avatarbox.scss":
+/***/ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/sass/AvatarBox.scss":
 /*!**************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./resources/sass/Avatarbox.scss ***!
+  !*** ./node_modules/css-loader!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./resources/sass/AvatarBox.scss ***!
   \**************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -3807,7 +3807,26 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "#Avatarbox {\n  width: 100%;\n  height: 100%;\n  font-family: \"Roboto\", sans-serif;\n}\n#Avatarbox .Avatarbox__message {\n  width: 0px;\n  height: 0px;\n  z-index: 1;\n}\n#Avatarbox .Avatarbox__message .Avatarbox__message__name,\n#Avatarbox .Avatarbox__message .Avatarbox__message__bubble {\n  position: absolute;\n  font-size: 12px;\n}\n#Avatarbox .Avatarbox__message .Avatarbox__message__name {\n  width: 200px;\n  top: 28px;\n  text-align: center;\n  -webkit-transform: translateX(-68%);\n          transform: translateX(-68%);\n}\n#Avatarbox .Avatarbox__message .Avatarbox__message__name.own {\n  font-weight: bold;\n  color: #0d5e9f;\n}\n#Avatarbox .Avatarbox__message .Avatarbox__message__bubble {\n  display: inline-block;\n  min-width: 75px;\n  max-width: 275px;\n  bottom: 70px;\n  padding: 13px;\n  border-radius: 20px;\n  box-sizing: border-box;\n  -webkit-transform: translateX(-60%);\n          transform: translateX(-60%);\n  -webkit-transform-origin: center bottom;\n          transform-origin: center bottom;\n  background-color: #787878;\n  box-shadow: 0px 5px 2px 0px rgba(0, 0, 0, 0.25);\n  color: aliceblue;\n  visibility: hidden;\n}\n#Avatarbox .Avatarbox__message .Avatarbox__message__bubble :after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 0;\n  height: 0;\n  left: 0px;\n  right: 0px;\n  margin: 0px auto;\n  border-style: solid;\n  border-width: 25px 35px 0 0px;\n  border-color: #787878 transparent transparent transparent;\n}\n#Avatarbox .Avatarbox__message .Avatarbox__message__bubble.own {\n  background-color: #0d5e9f;\n}\n#Avatarbox .Avatarbox__message .Avatarbox__message__bubble.own :after {\n  border-color: #0d5e9f transparent transparent transparent;\n}\n#Avatarbox .Avatarbox__message .Avatarbox__bubble__inner {\n  display: inline-block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  padding: 0px;\n  margin: 0px;\n}", ""]);
+exports.push([module.i, "/** COLOR VALUES **/\n/** FONT VARIABLES **/\n/** CHAT BUBBLES **/\n/** BOX CORNERS **/\n/** CHAT BOX VALUES **/\n/** EASE BEZIERS **/\n/** RESET PSEUDO ELEMENT **/\n/** CONVERT ELEMENT INTO A TRIANGLE **/\n/** CONVERT ELEMENT INTO A SPEECH BUBBLE **/\n#AvatarBox {\n  width: 100%;\n  height: 100%;\n  font-family: \"Roboto\", sans-serif;\n}\n#AvatarBox .Avatarbox__message {\n  width: 0px;\n  height: 0px;\n  z-index: 1;\n}\n#AvatarBox .Avatarbox__message .Avatarbox__message__name,\n#AvatarBox .Avatarbox__message .Avatarbox__message__bubble {\n  position: absolute;\n  font-size: 12px;\n}\n#AvatarBox .Avatarbox__message .Avatarbox__message__name {\n  width: 200px;\n  top: 28px;\n  text-align: center;\n  -webkit-transform: translateX(-68%);\n          transform: translateX(-68%);\n  color: #555;\n}\n#AvatarBox .Avatarbox__message .Avatarbox__message__name .inner {\n  padding: 2px;\n  background-color: rgba(255, 255, 255, 0.5);\n  border-radius: 3px;\n}\n#AvatarBox .Avatarbox__message .Avatarbox__message__name.own {\n  font-weight: bold;\n  color: #0d5e9f;\n}\n#AvatarBox .Avatarbox__message .Avatarbox__message__bubble {\n  border-radius: 10px;\n  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);\n  background-color: #787878;\n  color: aliceblue;\n  box-sizing: border-box;\n  word-wrap: break-word;\n  display: inline-block;\n  min-width: 150px;\n  max-width: 275px;\n  bottom: 70px;\n  padding: 13px;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  -webkit-transform-origin: center bottom;\n          transform-origin: center bottom;\n  visibility: hidden;\n  text-align: justify;\n}\n#AvatarBox .Avatarbox__message .Avatarbox__message__bubble:after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  border: solid transparent;\n  border-width: 12px 17px 0px 0px;\n  width: 0px;\n  height: 0px;\n  border-top-color: #787878;\n  top: 100%;\n  left: 0px;\n  right: 18px;\n}\n#AvatarBox .Avatarbox__message .Avatarbox__message__bubble:after {\n  margin: 0px auto;\n}\n#AvatarBox .Avatarbox__message .Avatarbox__message__bubble.own {\n  background-color: #0d5e9f;\n}\n#AvatarBox .Avatarbox__message .Avatarbox__message__bubble.own:after {\n  border-color: #0d5e9f transparent transparent transparent;\n}\n#AvatarBox .Avatarbox__message .Avatarbox__bubble__inner {\n  display: inline-block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  padding: 0px;\n  margin: 0px;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/sass/ChatBox.scss":
+/*!************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./resources/sass/ChatBox.scss ***!
+  \************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "/** COLOR VALUES **/\n/** FONT VARIABLES **/\n/** CHAT BUBBLES **/\n/** BOX CORNERS **/\n/** CHAT BOX VALUES **/\n/** EASE BEZIERS **/\n#ChatBox {\n  position: absolute;\n  display: block;\n  bottom: 0px;\n  left: 0px;\n  right: 0px;\n  margin: 0px auto;\n  min-width: 300px;\n  width: 40%;\n  height: 50px;\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  background-color: #555;\n  z-index: 2;\n}\n#ChatBox .ChatBox__textbox {\n  position: absolute;\n  display: block;\n  width: 95%;\n  height: 60%;\n  left: 0px;\n  top: 0px;\n  right: 0px;\n  bottom: 0px;\n  margin: auto;\n  padding: 5px;\n  box-sizing: border-box;\n  border-radius: 3px;\n}", ""]);
 
 // exports
 
@@ -3826,17 +3845,17 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "#ChatContainer {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  background-color: #DDD;\n}", ""]);
+exports.push([module.i, "/** COLOR VALUES **/\n/** FONT VARIABLES **/\n/** CHAT BUBBLES **/\n/** BOX CORNERS **/\n/** CHAT BOX VALUES **/\n/** EASE BEZIERS **/\n#ChatContainer {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  background-color: #DDD;\n}", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/sass/Chatbox.scss":
-/*!************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./resources/sass/Chatbox.scss ***!
-  \************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/sass/ChatLogs.scss":
+/*!*************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./resources/sass/ChatLogs.scss ***!
+  \*************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3845,7 +3864,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "div,\ncanvas,\nimg,\ninput {\n  border: 0;\n}\n\ndiv,\ncanvas,\nimg {\n  position: absolute;\n  display: block;\n  margin: 0px;\n  padding: 0px;\n}\n\nimg {\n  position: relative;\n  display: inline;\n}\n\n#Chatbox {\n  position: absolute;\n  display: block;\n  bottom: 0px;\n  left: 0px;\n  right: 0px;\n  margin: 0px auto;\n  width: 40%;\n  height: 50px;\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  background-color: #555;\n  z-index: 2;\n}\n#Chatbox .Chatbox__textbox {\n  position: absolute;\n  display: block;\n  width: 95%;\n  height: 60%;\n  left: 0px;\n  top: 0px;\n  right: 0px;\n  bottom: 0px;\n  margin: auto;\n  padding: 5px;\n  box-sizing: border-box;\n  border-radius: 3px;\n}", ""]);
+exports.push([module.i, "/** COLOR VALUES **/\n/** FONT VARIABLES **/\n/** CHAT BUBBLES **/\n/** BOX CORNERS **/\n/** CHAT BOX VALUES **/\n/** EASE BEZIERS **/\n/** RESET PSEUDO ELEMENT **/\n/** CONVERT ELEMENT INTO A TRIANGLE **/\n/** CONVERT ELEMENT INTO A SPEECH BUBBLE **/\n#ChatLogs {\n  position: absolute;\n  display: block;\n  bottom: 0px;\n  left: 0px;\n  right: 0px;\n  margin: 0px auto;\n  min-width: 300px;\n  width: 40%;\n  height: 40%;\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  background-color: rgba(85, 85, 85, 0.85);\n  z-index: 2;\n  font-family: \"Roboto\", sans-serif;\n  -webkit-transition: height 0.3s cubic-bezier(0.4, 0.95, 0.7, 1);\n  transition: height 0.3s cubic-bezier(0.4, 0.95, 0.7, 1);\n}\n#ChatLogs .ChatLogs__pullout {\n  width: 30px;\n  height: 25px;\n  right: 0px;\n  top: 0px;\n  border-top-right-radius: 10px;\n  border-top-left-radius: 10px;\n  background-color: #0d5e9f;\n  -webkit-transform: translateY(-90%);\n          transform: translateY(-90%);\n  cursor: pointer;\n  -webkit-transition: background-color 0.3s;\n  transition: background-color 0.3s;\n}\n#ChatLogs .ChatLogs__pullout:after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  padding: 10px;\n  left: -10px;\n  top: -10px;\n}\n#ChatLogs .ChatLogs__pullout:hover {\n  background-color: #117ace;\n}\n#ChatLogs .ChatLogs__pullout .inner {\n  display: block;\n  width: 100%;\n  height: 100%;\n}\n#ChatLogs .ChatLogs__pullout .inner:before, #ChatLogs .ChatLogs__pullout .inner:after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  width: 2px;\n  height: 10px;\n  top: 0px;\n  right: 0px;\n  bottom: 0px;\n  left: 0px;\n  margin: auto;\n  border-radius: 3px;\n  background-color: aliceblue;\n  -webkit-transform-origin: center center;\n          transform-origin: center center;\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n#ChatLogs .ChatLogs__pullout .inner:before {\n  -webkit-transition: -webkit-transform 0.35s;\n  transition: -webkit-transform 0.35s;\n  transition: transform 0.35s;\n  transition: transform 0.35s, -webkit-transform 0.35s;\n}\n#ChatLogs .ChatLogs__pullout.collapsed .inner:before {\n  -webkit-transform: rotate(0deg);\n          transform: rotate(0deg);\n}\n#ChatLogs .ChatLogs__container {\n  width: 97%;\n  height: calc(97% - 50px);\n  top: 3%;\n  left: 0px;\n  right: 0px;\n  margin: 0px auto;\n  padding: 40px 0px 0px 0px;\n  background-color: rgba(255, 255, 255, 0.7);\n  border-top-right-radius: 3px;\n  border-top-left-radius: 3px;\n  box-sizing: border-box;\n  overflow-y: scroll;\n  font-size: 12px;\n}\n#ChatLogs .ChatLogs__container .ChatLogs__message {\n  position: relative;\n  display: inline-block;\n  width: 100%;\n  margin: 10px 0px 20px 0px;\n  border-radius: 5px;\n}\n#ChatLogs .ChatLogs__container .ChatLogs__message .ChatLogs__message__inner {\n  position: inherit;\n  max-width: 60%;\n  left: 30px;\n  float: left;\n}\n#ChatLogs .ChatLogs__container .ChatLogs__message .ChatLogs__message__inner .user_id {\n  display: inline-block;\n  -webkit-transform: translateY(-100%);\n          transform: translateY(-100%);\n}\n#ChatLogs .ChatLogs__container .ChatLogs__message .ChatLogs__message__inner .user_id .name,\n#ChatLogs .ChatLogs__container .ChatLogs__message .ChatLogs__message__inner .user_id .id {\n  display: block;\n}\n#ChatLogs .ChatLogs__container .ChatLogs__message .ChatLogs__message__inner .user_id .name {\n  color: #3c3c3c;\n}\n#ChatLogs .ChatLogs__container .ChatLogs__message .ChatLogs__message__inner .user_id .id {\n  font-size: 10px;\n  color: #555;\n}\n#ChatLogs .ChatLogs__container .ChatLogs__message .ChatLogs__message__inner .body {\n  width: 100%;\n  border-radius: 10px;\n  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);\n  background-color: #787878;\n  color: aliceblue;\n  box-sizing: border-box;\n  word-wrap: break-word;\n  border-top-left-radius: 0px;\n  margin: 5px 0px 10px 0px;\n  padding: 10px;\n}\n#ChatLogs .ChatLogs__container .ChatLogs__message .ChatLogs__message__inner .body:after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  border: solid transparent;\n  border-width: 0px 5px 10px 0px;\n  width: 0px;\n  height: 0px;\n  border-right-color: #787878;\n  right: 100%;\n  top: 5px;\n  bottom: auto;\n}\n#ChatLogs .ChatLogs__container .ChatLogs__message .ChatLogs__message__inner .body .segment {\n  display: block;\n  padding: 5px 0px;\n}\n#ChatLogs .ChatLogs__container .ChatLogs__message .ChatLogs__message__inner .body .segment:first-child {\n  padding-top: 0px;\n}\n#ChatLogs .ChatLogs__container .ChatLogs__message .ChatLogs__message__inner .body .segment:last-child {\n  padding-bottom: 0px;\n}\n#ChatLogs .ChatLogs__container .ChatLogs__message.own .ChatLogs__message__inner {\n  left: auto;\n  right: 30px;\n  float: right;\n}\n#ChatLogs .ChatLogs__container .ChatLogs__message.own .ChatLogs__message__inner .user_id {\n  right: 0px;\n}\n#ChatLogs .ChatLogs__container .ChatLogs__message.own .ChatLogs__message__inner .user_id .name,\n#ChatLogs .ChatLogs__container .ChatLogs__message.own .ChatLogs__message__inner .user_id .id {\n  float: right;\n  clear: right;\n}\n#ChatLogs .ChatLogs__container .ChatLogs__message.own .ChatLogs__message__inner .user_id .name {\n  color: #094270;\n}\n#ChatLogs .ChatLogs__container .ChatLogs__message.own .ChatLogs__message__inner .user_id .id {\n  color: #0d5e9f;\n}\n#ChatLogs .ChatLogs__container .ChatLogs__message.own .ChatLogs__message__inner .body {\n  border-radius: 10px;\n  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);\n  background-color: #0d5e9f;\n  color: aliceblue;\n  box-sizing: border-box;\n  word-wrap: break-word;\n  border-top-right-radius: 0px;\n}\n#ChatLogs .ChatLogs__container .ChatLogs__message.own .ChatLogs__message__inner .body:after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  border: solid transparent;\n  border-width: 0px 0px 10px 5px;\n  width: 0px;\n  height: 0px;\n  border-left-color: #0d5e9f;\n  left: 100%;\n  top: 5px;\n  bottom: auto;\n}\n\n#ChatLogs.collapsed {\n  height: 50px;\n}", ""]);
 
 // exports
 
@@ -65746,16 +65765,16 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/components/Chat/Avatarbox.js":
+/***/ "./resources/js/components/Chat/AvatarBox.js":
 /*!***************************************************!*\
-  !*** ./resources/js/components/Chat/Avatarbox.js ***!
+  !*** ./resources/js/components/Chat/AvatarBox.js ***!
   \***************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Avatarbox; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AvatarBox; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -65766,8 +65785,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Settings_Config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../Settings/Config */ "./resources/js/components/Settings/Config.js");
 /* harmony import */ var _Helpers_Rand__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../Helpers/Rand */ "./resources/js/components/Helpers/Rand.js");
 /* harmony import */ var _Helpers_Renderer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../Helpers/Renderer */ "./resources/js/components/Helpers/Renderer.js");
-/* harmony import */ var _sass_Avatarbox_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../../../sass/Avatarbox.scss */ "./resources/sass/Avatarbox.scss");
-/* harmony import */ var _sass_Avatarbox_scss__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_sass_Avatarbox_scss__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _sass_AvatarBox_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../../../sass/AvatarBox.scss */ "./resources/sass/AvatarBox.scss");
+/* harmony import */ var _sass_AvatarBox_scss__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_sass_AvatarBox_scss__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _img_spritesheet_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../../../img/spritesheet.png */ "./resources/img/spritesheet.png");
 /* harmony import */ var _img_spritesheet_png__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_img_spritesheet_png__WEBPACK_IMPORTED_MODULE_8__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -65806,17 +65825,17 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Avatarbox =
+var AvatarBox =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(Avatarbox, _React$Component);
+  _inherits(AvatarBox, _React$Component);
 
-  function Avatarbox(props) {
+  function AvatarBox(props) {
     var _this;
 
-    _classCallCheck(this, Avatarbox);
+    _classCallCheck(this, AvatarBox);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Avatarbox).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AvatarBox).call(this, props));
     _this.state = {
       activeClients: [],
       status: 'loading',
@@ -65841,7 +65860,7 @@ function (_React$Component) {
     return _this;
   }
 
-  _createClass(Avatarbox, [{
+  _createClass(AvatarBox, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
@@ -65910,7 +65929,7 @@ function (_React$Component) {
       var newActiveClients = _toConsumableArray(this.state.activeClients);
 
       var activeClientFound = newActiveClients.find(function (u) {
-        return data.id === u.id;
+        return data.user_id === u.id;
       });
 
       if (activeClientFound !== undefined) {
@@ -65919,7 +65938,7 @@ function (_React$Component) {
           activeClients: newActiveClients
         });
         var clientFound = this.clients.find(function (u) {
-          return data.id === u.id;
+          return data.user_id === u.id;
         });
         gsap__WEBPACK_IMPORTED_MODULE_3__["default"].killTweensOf(clientFound.dom.querySelector('.Avatarbox__message__bubble'));
         gsap__WEBPACK_IMPORTED_MODULE_3__["default"].fromTo(clientFound.dom.querySelector('.Avatarbox__message__bubble'), 0.45, {
@@ -66026,14 +66045,19 @@ function (_React$Component) {
       var userFound = this.state.activeClients.find(function (u) {
         return user.id === u.id;
       });
-      if (userFound === undefined) this.setState({
-        activeClients: [].concat(_toConsumableArray(this.state.activeClients), [{
+
+      if (userFound === undefined) {
+        var newUser = {
           id: user.id,
           user: user.user,
           message: '',
           avatar: user.avatar
-        }])
-      });
+        };
+        this.setState({
+          activeClients: [].concat(_toConsumableArray(this.state.activeClients), [newUser])
+        });
+      }
+
       var clientFound = this.clients.find(function (u) {
         return user.id === u.id;
       });
@@ -66100,7 +66124,7 @@ function (_React$Component) {
       var _this6 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "Avatarbox",
+        id: "AvatarBox",
         className: this.state.status,
         onClick: this.handleClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("canvas", {
@@ -66114,21 +66138,153 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "Avatarbox__message",
           key: client.id,
-          ref: function ref(div) {
-            return _this6.addReference(client, div);
+          ref: function ref(element) {
+            return _this6.addReference(client, element);
           }
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: 'Avatarbox__message__bubble' + (client.id === _this6.props.id ? ' own' : '')
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          className: "Avatarbox_bubble__inner"
+          className: "inner"
         }, client.message)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: 'Avatarbox__message__name' + (client.id === _this6.props.id ? ' own' : '')
-        }, client.user));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "inner"
+        }, client.user)));
       })));
     }
   }]);
 
-  return Avatarbox;
+  return AvatarBox;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Chat/ChatBox.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/Chat/ChatBox.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ChatBox; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _sass_ChatBox_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../../sass/ChatBox.scss */ "./resources/sass/ChatBox.scss");
+/* harmony import */ var _sass_ChatBox_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_sass_ChatBox_scss__WEBPACK_IMPORTED_MODULE_2__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var ChatBox =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ChatBox, _React$Component);
+
+  function ChatBox(props) {
+    var _this;
+
+    _classCallCheck(this, ChatBox);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ChatBox).call(this, props));
+    _this.state = {
+      text: '',
+      chats: [],
+      errors: [],
+      ready: true
+    };
+    _this.textInput = null;
+    _this.handleTextChange = _this.handleTextChange.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+  /** HANDLE CHAT INPUT CHANGE **/
+
+
+  _createClass(ChatBox, [{
+    key: "handleTextChange",
+    value: function handleTextChange(event) {
+      if (event.keyCode === 13 && this.state.text.trim().length > 0) this.sendMessage(this.state.text);else this.setState({
+        text: event.target.value
+      });
+    }
+    /** SEND CHAT MESSAGE **/
+
+  }, {
+    key: "sendMessage",
+    value: function sendMessage(message) {
+      var _this2 = this;
+
+      if (!this.state.ready) return;
+      var payload = {
+        id: this.props.id,
+        user: this.props.name,
+        message: message
+      };
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/send_message', payload).then(function (response) {
+        // clear form input
+        _this2.setState({
+          text: '',
+          ready: true
+        });
+
+        _this2.textInput.focus();
+      })["catch"](function (error) {
+        _this2.setState({
+          errors: error.response.data.errors,
+          ready: true
+        });
+      });
+      this.setState({
+        ready: false
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "ChatBox"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        value: this.state.text,
+        placeholder: "Type your message here...",
+        className: "ChatBox__textbox",
+        onChange: this.handleTextChange,
+        onKeyDown: this.handleTextChange,
+        maxLength: "250",
+        disabled: !this.state.ready,
+        ref: function ref(element) {
+          _this3.textInput = element;
+        }
+      }));
+    }
+  }]);
+
+  return ChatBox;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
@@ -66148,10 +66304,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Helpers_Rand__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../Helpers/Rand */ "./resources/js/components/Helpers/Rand.js");
-/* harmony import */ var _Chatbox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Chatbox */ "./resources/js/components/Chat/Chatbox.js");
-/* harmony import */ var _Avatarbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Avatarbox */ "./resources/js/components/Chat/Avatarbox.js");
-/* harmony import */ var _sass_ChatContainer_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../../sass/ChatContainer.scss */ "./resources/sass/ChatContainer.scss");
-/* harmony import */ var _sass_ChatContainer_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_sass_ChatContainer_scss__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _ChatBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ChatBox */ "./resources/js/components/Chat/ChatBox.js");
+/* harmony import */ var _ChatLogs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ChatLogs */ "./resources/js/components/Chat/ChatLogs.js");
+/* harmony import */ var _AvatarBox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AvatarBox */ "./resources/js/components/Chat/AvatarBox.js");
+/* harmony import */ var _sass_ChatContainer_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../../../sass/ChatContainer.scss */ "./resources/sass/ChatContainer.scss");
+/* harmony import */ var _sass_ChatContainer_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_sass_ChatContainer_scss__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66169,6 +66326,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -66209,10 +66367,13 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "ChatContainer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Avatarbox__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AvatarBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
         id: this.id,
         name: this.name
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Chatbox__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatLogs__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        id: this.id,
+        name: this.name
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatBox__WEBPACK_IMPORTED_MODULE_2__["default"], {
         id: this.id,
         name: this.name
       }));
@@ -66226,23 +66387,34 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Chat/Chatbox.js":
-/*!*************************************************!*\
-  !*** ./resources/js/components/Chat/Chatbox.js ***!
-  \*************************************************/
+/***/ "./resources/js/components/Chat/ChatLogs.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/Chat/ChatLogs.js ***!
+  \**************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Chatbox; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ChatLogs; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _sass_Chatbox_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../../sass/Chatbox.scss */ "./resources/sass/Chatbox.scss");
-/* harmony import */ var _sass_Chatbox_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_sass_Chatbox_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var pusher_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
+/* harmony import */ var pusher_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(pusher_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Settings_Config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../Settings/Config */ "./resources/js/components/Settings/Config.js");
+/* harmony import */ var _sass_ChatLogs_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../../sass/ChatLogs.scss */ "./resources/sass/ChatLogs.scss");
+/* harmony import */ var _sass_ChatLogs_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_sass_ChatLogs_scss__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -66264,76 +66436,145 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Chatbox =
+
+
+var ChatLogs =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(Chatbox, _React$Component);
+  _inherits(ChatLogs, _React$Component);
 
-  function Chatbox(props) {
+  function ChatLogs(props) {
     var _this;
 
-    _classCallCheck(this, Chatbox);
+    _classCallCheck(this, ChatLogs);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Chatbox).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ChatLogs).call(this, props));
     _this.state = {
-      text: '',
-      chats: [],
-      errors: []
+      collapsed: true,
+      messages: []
     };
-    _this.handleTextChange = _this.handleTextChange.bind(_assertThisInitialized(_this));
+    _this.container = null;
+    _this.addReference = _this.addReference.bind(_assertThisInitialized(_this));
+    _this.handleMessage = _this.handleMessage.bind(_assertThisInitialized(_this));
+    _this.handleToggle = _this.handleToggle.bind(_assertThisInitialized(_this));
+    _this.resetScroll = _this.resetScroll.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(Chatbox, [{
-    key: "handleTextChange",
-    value: function handleTextChange(e) {
-      if (e.keyCode === 13 && this.state.text.trim().length > 0) {
-        this.sendMessage(this.state.text);
-      } else {
-        this.setState({
-          text: e.target.value
-        });
-      }
+  _createClass(ChatLogs, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.fetchChats();
+      var pusher = new pusher_js__WEBPACK_IMPORTED_MODULE_2___default.a(_Settings_Config__WEBPACK_IMPORTED_MODULE_3__["default"].pusherKey, {
+        cluster: _Settings_Config__WEBPACK_IMPORTED_MODULE_3__["default"].pusherCluster,
+        forceTLS: _Settings_Config__WEBPACK_IMPORTED_MODULE_3__["default"].forceTLS
+      }),
+          channel = pusher.subscribe(_Settings_Config__WEBPACK_IMPORTED_MODULE_3__["default"].defaultChannel ? _Settings_Config__WEBPACK_IMPORTED_MODULE_3__["default"].defaultChannel : 'chat_channel');
+      channel.bind('message_event', this.handleMessage);
     }
   }, {
-    key: "sendMessage",
-    value: function sendMessage(message) {
+    key: "fetchChats",
+    value: function fetchChats() {
       var _this2 = this;
 
-      var payload = {
-        id: this.props.id,
-        user: this.props.name,
-        message: message
-      };
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/send_message', payload).then(function (response) {
-        // clear form input
-        _this2.setState({
-          text: ''
-        });
-      })["catch"](function (error) {
-        _this2.setState({
-          errors: error.response.data.errors
-        });
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('api/messages').then(function (response) {
+        var data = response.data;
+
+        _this2.handleMessage(data.data.reverse());
       });
+    }
+  }, {
+    key: "addReference",
+    value: function addReference(element) {
+      this.container = element;
+    }
+  }, {
+    key: "handleMessage",
+    value: function handleMessage(data) {
+      var messages = Array.isArray(data) ? data : [data],
+          currentMessages = _toConsumableArray(this.state.messages);
+
+      for (var ctr = 0; ctr < messages.length; ctr++) {
+        var message = messages[ctr],
+            messageId = message.id !== undefined ? message.id : message._id,
+            messageSegment = {
+          id: messageId,
+          message: message.message
+        },
+            newMessage = {
+          id: messageId,
+          user_id: message.user_id,
+          user: message.user,
+          message: [messageSegment]
+        },
+            lastMessage = currentMessages.length ? currentMessages[currentMessages.length - 1] : undefined;
+        var lastMessageFound = false;
+        if (lastMessage) if (lastMessage.user_id === newMessage.user_id) {
+          lastMessage.message.push(messageSegment);
+          lastMessageFound = true;
+        }
+        if (!lastMessageFound) currentMessages.push(newMessage);
+      }
+
+      this.setState({
+        messages: currentMessages
+      }, this.resetScroll);
+    }
+  }, {
+    key: "handleToggle",
+    value: function handleToggle(event) {
+      this.setState({
+        collapsed: this.state.collapsed ? false : true
+      }, this.resetScroll);
+    }
+  }, {
+    key: "resetScroll",
+    value: function resetScroll() {
+      this.container.scrollTop = this.container.scrollHeight - this.container.clientHeight;
     }
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "Chatbox"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.state.text,
-        placeholder: "type message here...",
-        className: "Chatbox__textbox",
-        onChange: this.handleTextChange,
-        onKeyDown: this.handleTextChange,
-        maxLength: "250"
-      }));
+        id: "ChatLogs",
+        className: this.state.collapsed ? ' collapsed' : ''
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: 'ChatLogs__pullout' + (this.state.collapsed ? ' collapsed' : ''),
+        onClick: this.handleToggle
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "inner"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "ChatLogs__container",
+        ref: function ref(element) {
+          return _this3.addReference(element);
+        }
+      }, this.state.messages.map(function (message) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: 'ChatLogs__message' + (message.user_id == _this3.props.id ? ' own' : ''),
+          key: message.id
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "ChatLogs__message__inner"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "user_id"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
+          className: "name"
+        }, message.user), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "id"
+        }, '{' + message.user_id.replace(message.user + '_', '') + '}')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "body"
+        }, message.message.map(function (message) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            className: "segment",
+            key: message.id
+          }, message.message);
+        }))));
+      })));
     }
   }]);
 
-  return Chatbox;
+  return ChatLogs;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
@@ -66674,15 +66915,45 @@ function unregister() {
 
 /***/ }),
 
-/***/ "./resources/sass/Avatarbox.scss":
+/***/ "./resources/sass/AvatarBox.scss":
 /*!***************************************!*\
-  !*** ./resources/sass/Avatarbox.scss ***!
+  !*** ./resources/sass/AvatarBox.scss ***!
   \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/postcss-loader/src??ref--7-2!../../node_modules/sass-loader/dist/cjs.js??ref--7-3!./Avatarbox.scss */ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/sass/Avatarbox.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/postcss-loader/src??ref--7-2!../../node_modules/sass-loader/dist/cjs.js??ref--7-3!./AvatarBox.scss */ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/sass/AvatarBox.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./resources/sass/ChatBox.scss":
+/*!*************************************!*\
+  !*** ./resources/sass/ChatBox.scss ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/postcss-loader/src??ref--7-2!../../node_modules/sass-loader/dist/cjs.js??ref--7-3!./ChatBox.scss */ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/sass/ChatBox.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -66734,15 +67005,15 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./resources/sass/Chatbox.scss":
-/*!*************************************!*\
-  !*** ./resources/sass/Chatbox.scss ***!
-  \*************************************/
+/***/ "./resources/sass/ChatLogs.scss":
+/*!**************************************!*\
+  !*** ./resources/sass/ChatLogs.scss ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/postcss-loader/src??ref--7-2!../../node_modules/sass-loader/dist/cjs.js??ref--7-3!./Chatbox.scss */ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/sass/Chatbox.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/postcss-loader/src??ref--7-2!../../node_modules/sass-loader/dist/cjs.js??ref--7-3!./ChatLogs.scss */ "./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./resources/sass/ChatLogs.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 

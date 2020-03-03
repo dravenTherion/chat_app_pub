@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 
 import { randName } from './../Helpers/Rand'
 
-import Chatbox from './Chatbox';
-import Avatarbox from './Avatarbox';
+import ChatBox from './ChatBox';
+import ChatLogs from './ChatLogs';
+
+import AvatarBox from './AvatarBox';
 
 import './../../../sass/ChatContainer.scss';
 
@@ -30,8 +32,9 @@ export default class ChatContainer extends React.Component{
         return(
             <div id="ChatContainer">
             
-                <Avatarbox id={this.id} name={this.name} />
-                <Chatbox id={this.id} name={this.name} />
+                <AvatarBox id={this.id} name={this.name} />
+                <ChatLogs id={this.id} name={this.name} />
+                <ChatBox id={this.id} name={this.name} />
             
             </div>
         )
