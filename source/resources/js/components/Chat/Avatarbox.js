@@ -114,12 +114,23 @@ export default class AvatarBox extends React.Component{
 
 
             Renderer.init(this.canvas, this.clients, spritesheet);
-            gsap.ticker.add(Renderer.renderCanvas);
+            this.toggleTicker(true);
             
         });
         
     }
-    
+
+
+    /** TOGGLE TICKER **/
+
+    toggleTicker(activate) {
+
+        if (activate)
+            gsap.ticker.add(Renderer.renderCanvas);
+        else
+            gsap.ticker.remove(Renderer.renderCanvas);
+
+    }
     
     /** HANDLE WINDOW RESIZE **/
     
@@ -191,7 +202,7 @@ export default class AvatarBox extends React.Component{
         
         if(clientFound !== undefined)
         {            
-            const speed = 300,
+            const speed = 250,
               
                   deltaX = data.tx - clientFound.x,     
                   deltaY = data.ty - clientFound.y,
@@ -199,17 +210,26 @@ export default class AvatarBox extends React.Component{
               
                   time  = dist / speed;
             
+            if(gsap.isTweening(clientFound))
+            {
+                clientFound.timeline.vars.onComplete = null;
+                
+                gsap.killTweensOf(clientFound);
+                gsap.killTweensOf(clientFound.dom);
+            }
             
-            clientFound.direction = data.tx < data.x ? -1 : 1;
-            clientFound.currentFrameSet = 1;
-            
-            gsap.killTweensOf(clientFound);
-            gsap.killTweensOf(clientFound.dom);
-
-            gsap.to(clientFound, time, {x: data.tx, y: data.ty, ease: 'linear'});
-            gsap.to(clientFound.dom, time, {x: data.tx, y: data.ty, ease: 'linear', 
-                                            onComplete: (t)=>{
-                                                
+            const tl = gsap.timeline({  paused: true,
+                                        onStartParams: [clientFound],
+                                        onStart: (t)=>{
+                                            
+                                            t.direction = data.tx < data.x ? -1 : 1;
+                                            t.currentFrameSet = 1;
+                                        
+                                        },
+                                      
+                                        onCompleteParams: [clientFound],
+                                        onComplete: (t)=>{
+                                            
                                                 t.currentFrameSet = 0;
                                                 
                                                 if(t.id === this.props.id)
@@ -220,13 +240,30 @@ export default class AvatarBox extends React.Component{
                                                         y: this.Avatar.y,
                                                         tx: this.Avatar.x,
                                                         ty: this.Avatar.y,
-                                                        trigger: false,
+                                                        trigger: false
                                                     }
 
                                                     axios.post('api/send_update', payload);
                                                 }
-                                                
-                                            }, onCompleteParams: [clientFound]});
+                                        }
+                                     });
+            
+            const dx = Math.abs(data.tx - clientFound.x),
+                  dy = Math.abs(data.ty - clientFound.y),
+                  
+                  easeX = dx < dy ? 'sine.in' : 'none',
+                  easeY = dy < dx ? 'sine.in' : 'none';
+            
+            
+            tl.to(clientFound, time, {x: data.tx, ease: easeX}, 0);
+            tl.to(clientFound, time, {y: data.ty, ease: easeY}, 0);
+
+            tl.to(clientFound.dom, time, {x: data.tx, ease: easeX}, 0);
+            tl.to(clientFound.dom, time, {y: data.ty, ease: easeY}, 0);
+            
+            clientFound.timeline = tl;
+            
+            tl.play();
         }
         
     }
@@ -246,6 +283,21 @@ export default class AvatarBox extends React.Component{
         
         });          
     
+    }
+    
+    
+    /** HANDLE CLIENT LEAVE **/
+    
+    handleLeave(data){
+        
+        const newActiveClients = this.state.activeClients.filter((user)=>{return user.id !== data.id;});
+        
+        this.setState({activeClients: newActiveClients});
+                
+        this.clients = this.clients.filter((u)=>{return u.id !== data.id;});
+        
+        Renderer.setList(this.clients);
+        
     }
     
     
@@ -299,7 +351,8 @@ export default class AvatarBox extends React.Component{
                     new Renderer.frame((client.avatar * frameWidth * 2 + frameWidth), 0, frameWidth, frameHeight, 20, 0)
                 ],
                 currentFrameSet: 0,
-                direction: 1
+                direction: 1,
+                timeline: null
             };
             
             if(id === this.props.id)
@@ -311,27 +364,12 @@ export default class AvatarBox extends React.Component{
     }
     
     
-    /** HANDLE CLIENT LEAVE **/
-    
-    handleLeave(data){
-        
-        const newActiveClients = this.state.activeClients.filter((user)=>{return user.id !== data.id;});
-        
-        this.setState({activeClients: newActiveClients});
-                
-        this.clients = this.clients.filter((u)=>{return u.id !== data.id;});
-        
-        Renderer.setList(this.clients);
-        
-    }
-    
-    
-    /** RENDER CANVAS **/
+    /** RENDER AVATAR BOX **/
     
     render(){
         return(
             <div id="AvatarBox" className={this.state.status} onClick={this.handleClick}>
-                <canvas width={this.width} height={this.height} className="Avatarbox__canvas" ref={canvas=>this.canvas=canvas}>
+                <canvas className="Avatarbox__canvas" width={this.width} height={this.height} ref={canvas=>this.canvas=canvas}>
                 </canvas>
                 <ul>
                     {this.state.activeClients.map(client=>{
@@ -340,7 +378,7 @@ export default class AvatarBox extends React.Component{
                             <div className="Avatarbox__message" key={client.id} ref={(element)=>this.addReference(client, element)}>
             
                                 <p className={'Avatarbox__message__bubble' + (client.id === this.props.id ? ' own' : '')}>
-                                    <span className="inner">
+                                    <span className="Avatarbox__message_wrapper">
                                         {client.message}
                                     </span>
                                 </p>                

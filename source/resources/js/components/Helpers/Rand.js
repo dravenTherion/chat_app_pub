@@ -7,6 +7,7 @@ export function randName(){
                         'cyan', 
                         'magenta', 
                         'yellow', 
+                        'brown', 
                         'cool', 
                         'chill', 
                         'funny', 

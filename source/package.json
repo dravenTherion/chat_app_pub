@@ -22,6 +22,8 @@
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
+        "@material-ui/core": "^4.9.5",
+        "@material-ui/icons": "^4.9.1",
         "gsap": "^3.0.4",
         "pusher-js": "^5.0.3"
     }

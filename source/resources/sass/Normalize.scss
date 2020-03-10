@@ -1,8 +1,10 @@
 div,
 canvas,
 img,
-input{
+input {
     border: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
 }
 
 div,

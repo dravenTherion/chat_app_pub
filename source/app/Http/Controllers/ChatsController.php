@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use MongoDB\BSON\UTCDateTime;
+
 use Illuminate\Http\Request;
 
 use App\Events\MessageSent;
@@ -30,17 +32,43 @@ class ChatsController extends Controller
             'message' => $request->input('message')
         ]);
         
-        event(new MessageSent($message->id, $message->user_id, $message->user, $message->message));
+        event(new MessageSent($message->id, $message->user_id, $message->user, $message->message, $message->created_at));
         
         return 'message sent!';
     }
 
+    
+    /**
+     * Fetch messages based on page
+     *
+     */
+    
     public function fetchMessages(Request $request)
     {
-        $message = ChatMessage::orderBy('created_at','desc')
-                              ->paginate(10, ['id', 'user_id', 'user', 'message', 'created_at']);
+        $skip = $request->input('offset') ? intval($request->input('offset')) : 0;
+        $take = $request->input('limit') ? intval($request->input('limit')) : 10;
         
-        return $message;
+        $count = ChatMessage::count();
+        
+        $message = ChatMessage::orderBy('created_at','desc')
+                              ->skip($skip)
+                              ->take($take)
+                              ->get(['id', 'user_id', 'user', 'message', 'created_at']);
+
+        
+        for($ctr=0; $ctr < count($message); $ctr++)
+        {
+            $date = new \MongoDB\BSON\UTCDateTime($message[$ctr]->created_at);
+            
+            $message[$ctr]['created'] = $date->toDateTime()->format(DATE_ATOM);
+        }
+
+        $data['data'] = $message;
+        
+        $data['count'] = $count;
+        $data['to'] = $skip + $take;
+        
+        return $data;
     }
     
     

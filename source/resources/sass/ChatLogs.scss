@@ -1,11 +1,15 @@
 @import 'Variables.scss';
+@import 'Extensions.scss';
 @import 'Mixins.scss';
 
 
 #ChatLogs{
-    
+
+    @extend %flex-center;
+
     position: absolute;
-    display: block;
+    
+    font-family: $fontStack;
     
     bottom: 0px;
     left: 0px;
@@ -21,13 +25,16 @@
     border-top-right-radius: $cornerRadius--medium;
     
     background-color: rgba($primaryColor, 0.85);
+    box-shadow: $genericBoxShadow;
     
     z-index: 2;
-    
-    font-family: $fontStack;
-    
-    transition: height .3s $primaryBezierOut;
         
+    transition: height .3s $primaryBezierOut;
+    
+    &.collapsed{
+        height: $chatBoxHeight;
+    }
+    
     
     .ChatLogs__pullout{
         
@@ -43,6 +50,7 @@
         border-top-left-radius: $cornerRadius--big;
         
         background-color: $accentColor;
+        box-shadow: $genericBoxShadow;
             
         transform: translateY(-90%);
         
@@ -56,39 +64,53 @@
         
         .inner{
             
-            display: block;
+            @extend %flex-center;
             
             width: 100%;
             height: 100%;
             
-            &:before,
-            &:after{
-                
-                @include reset-pseudo;
+            transform: rotate(180deg);
+            
+            transition: background-color 0.3s, transform 0.35s 0.1s $secondaryBezierOut;
+            transform-origin: center center;
+            
+            .bar{
+
+                @extend %flex-center;
+
+                position: absolute;
                 
                 width: 2px;
                 height: 10px;
                 
-                top: 0px;
-                right: 0px;
-                bottom: 0px;
-                left: 0px;
-                
-                margin: auto;
+                align-self: center;
                 
                 border-radius: $cornerRadius--small;
                 
                 background-color: $fontColor;
                 
-                transform-origin: center center;
-                
                 transform: rotate(90deg);
-                
-            }
-            
-            &:before{
-            
-                transition: transform 0.35s;
+                transform-origin: center center;
+
+                &:first-child{            
+                    transition: transform 0.35s 0.1s $secondaryBezierOut;
+                }
+
+                &:after{
+
+                    @include reset-pseudo;
+
+                    align-self: center;
+
+                    width: $cornerRadius--tiny;
+                    height: $cornerRadius--tiny;
+
+                    box-shadow: 1px 5px 0px 0px $fontColor,
+                                -1px 5px 0px 0px $fontColor,
+                                1px -5px 0px 0px $fontColor,
+                                -1px -5px 0px 0px $fontColor;
+
+                }
                 
             }
             
@@ -96,8 +118,14 @@
         
         &.collapsed{
             
-            .inner:before{
-                transform: rotate(0deg);
+            .inner{
+             
+                transform: rotate(90deg);
+            
+                .bar:first-child{
+                    transform: rotate(0deg);
+                }
+                
             }
             
         }
@@ -105,16 +133,16 @@
     }
     
     .ChatLogs__container{
+        
+        @extend %flex-column;
+
+        align-self: center;
     
         width: 97%;
         height: calc(97% - #{$chatBoxHeight});
         
         top: 3%;
-        left: 0px;
-        right: 0px;
-        
-        margin: 0px auto;
-        padding: 40px 0px 0px 0px;
+        padding: 35px 0px 0px 0px;
         
         background-color: rgba(white, 0.7);
         
@@ -126,116 +154,113 @@
         
         font-size: $fontSize--main;
         
+        &.collapsed{
+            transition: visibility 0s $primaryBezierOut .3s;
+            visibility: hidden;
+        }
+        
         
         .ChatLogs__message{
             
+            align-self: flex-start;
+            
             position: relative;
-            display: inline-block;
             
-            width: 100%;
-            
-            margin: 10px 0px 20px 0px;
+            margin: 15px $sideSpacing 0px $sideSpacing;
+            padding-bottom: 30px;
             
             border-radius: $cornerRadius--medium;
             
-            .ChatLogs__message__inner{
+            min-width: $messageMinWidth;
+            max-width: $messageMaxWidth;
                 
-                position: inherit;
-                
-                max-width: $messageMaxWidth;
-                left: $sideSpacing;
-                
-                float: left;
-                
-                .user_id{
-                    
-                    display: inline-block;
-                    transform: translateY(-100%);
-                    
-                    .name,
-                    .id{
-                        display: block;
-                    }
-                    
-                    .name{
-                        color: darken($fontColorDark--generic, 10%);
-                    }
-                    
-                    .id{
-                        font-size: $fontSize--small;
-                        color: $fontColorDark--generic;
-                    }
-                    
-                }
-                
-                .body{
-                    
-                    width: 100%;
+            .user_id{
 
-                    @include make-bubble($cornerRadius--big, $bubbleColor--generic, $fontColor, $bubbleBoxShadow, left, 0px, 5px, 10px, 0px, 5px);
-                    
-                    border-top-left-radius: 0px;
-                    
-                    margin: 5px 0px 10px 0px;
-                    padding: 10px;
-                    
-                    .segment{
-                        
-                        display: block;
-                        padding: 5px 0px;
-                        
-                        &:first-child{
-                            padding-top: 0px;
-                        }
-                        
-                        &:last-child{
-                            padding-bottom: 0px;
-                        }
-                        
-                    }
-
-                }
+                @extend %flex-column;
                 
+                width: 100%;
+                
+                margin-left: -3px;
+                
+                transform: translateY(-100%);
+                
+                color: darken($fontColorDark--generic, 10%);
+                
+                .id{
+                    font-size: $fontSize--small;
+                }
+                    
+            }
+                
+            .body{
+
+                @extend %flex-column;
+                @include make-bubble($cornerRadius--big, $bubbleColor--generic, $fontColor, $genericBoxShadow, left, 0px, 5px, 10px, 0px, 5px);
+
+                width: 100%;
+
+                border-top-left-radius: 0px;
+                    
+                margin: 5px 0px 10px 0px;
+                padding: 10px;
+
+                white-space: pre-line;
+                    
+                .segment{
+                        
+                    padding: 5px 0px;
+                        
+                    &:first-child{
+                        padding-top: 0px;
+                    }
+                        
+                    &:last-child{
+                        padding-bottom: 0px;
+                    }
+                        
+                }
+    
+            }
+
+            .date{
+                position: relative;
+
+                font-style: italic;
+                font-size: $fontSize--small;
+                color: darken($fontColorDark--generic, 10%);
+
+                transform: translateY(-20%);
             }
             
             
             &.own{
                     
-                .ChatLogs__message__inner{
+                align-self: flex-end;
 
-                    left: auto;
-                    right: $sideSpacing;
+                .user_id,
+                .date{
+                    
+                    margin-left: 3px;
 
-                    float: right;
-
-                    .user_id{
-
-                        right: 0px;
-
-                        .name,
-                        .id{
-
-                            float: right;
-                            clear: right;
-                        }
-
-                        .name{
-                            color: darken($fontColorDark--own, 10%);
-                        }
-
-                        .id{
-                            color: $fontColorDark--own;
-                        }              
-
+                    color: darken($fontColorDark--own, 10%);
+                    
+                    .name,
+                    .id{
+                        align-self: flex-end;   
                     }
 
-                    .body{
+                }
 
-                        @include make-bubble($cornerRadius--big, $bubbleColor--own, $fontColor, $bubbleBoxShadow, right, 0px, 0px, 10px, 5px, 5px);
+                .body{
 
-                        border-top-right-radius: 0px;
+                    @include make-bubble($cornerRadius--big, $bubbleColor--own, $fontColor, $genericBoxShadow, right, 0px, 0px, 10px, 5px, 5px);
 
-                    }
+                    border-top-right-radius: 0px;
+
+                }
+
+                .date{
+                    text-align: right;
                 }
 
             }   
@@ -244,10 +269,4 @@
 
     }
     
-}
-
-#ChatLogs.collapsed{
-    
-    height: $chatBoxHeight;
-
 }

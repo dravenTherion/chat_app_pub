@@ -3,6 +3,8 @@ import axios from 'axios';
 
 import './../../../sass/ChatBox.scss'
 
+import SendIcon from '@material-ui/icons/Send';
+
 export default class ChatBox extends React.Component{
     
     constructor(props){
@@ -17,14 +19,19 @@ export default class ChatBox extends React.Component{
         this.textInput = null;
         
         this.handleTextChange = this.handleTextChange.bind(this);
+
+        this.validateMessage = this.validateMessage.bind(this);
     }
     
     /** HANDLE CHAT INPUT CHANGE **/
     
     handleTextChange(event){
         
-        if (event.keyCode === 13 && this.state.text.trim().length > 0)
-            this.sendMessage(this.state.text);
+        if (event.keyCode === 13)
+        {
+            if(!event.shiftKey)                
+                this.sendMessage(this.state.text);
+        }
         else 
             this.setState({ text: event.target.value });
         
@@ -33,8 +40,8 @@ export default class ChatBox extends React.Component{
     /** SEND CHAT MESSAGE **/
     
     sendMessage(message){
-        
-        if(!this.state.ready)
+
+        if (!this.state.ready || !this.validateMessage(message))
             return;
             
         const payload = {
@@ -63,9 +70,14 @@ export default class ChatBox extends React.Component{
                 })
              });
         
-        
         this.setState({ready: false});
         
+    }
+
+    /** VALIDATE MESSAGE LENGTH **/
+
+    validateMessage(message) {
+        return message.trim().length > 0;
     }
     
     render(){
@@ -73,18 +85,24 @@ export default class ChatBox extends React.Component{
         return(
 
             <div id="ChatBox">
-                <input
-                    type = "text"
-                    value = {this.state.text}
-                    placeholder = "Type your message here..."
-                    className = "ChatBox__textbox"
-                    onChange = {this.handleTextChange}
-                    onKeyDown = {this.handleTextChange}
-                    maxLength = "250"
-                    disabled = {!this.state.ready}
-            
-                    ref={(element)=>{this.textInput = element;}}
-                />
+                <div className="Chatbox__wrapper">
+                    <textarea
+
+                        value = {this.state.text}
+                        placeholder = "Type your message here..."
+                        className = "ChatBox__textbox"
+                        onChange = {this.handleTextChange}
+                        onKeyDown = {this.handleTextChange}
+                        maxLength = "250"
+                        disabled = {!this.state.ready}
+
+                        ref={(element)=>{this.textInput = element;}}
+
+                    ></textarea>
+                </div>
+                <div className={'Chatbox__send' + (!this.state.ready || !this.validateMessage(this.state.text) ? ' disabled' : '')} onClick={(event) => { this.sendMessage(this.state.text); }}>
+                    <SendIcon className="icon" style={{fontSize: 30}}/>
+                </div>
             </div>
 
         )

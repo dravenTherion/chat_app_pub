@@ -39,7 +39,7 @@ function _renderCanvas(){
     if(!_loaded)
         return;
     
-    const newList = [..._list];
+    const newList = _list;
     
     newList.sort((a, b)=>{ return a.y - b.y; });
 

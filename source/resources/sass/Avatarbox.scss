@@ -1,4 +1,5 @@
 @import 'Variables.scss';
+@import 'Extensions.scss';
 @import 'Mixins.scss';
 
 #AvatarBox{
@@ -7,14 +8,20 @@
     height: 100%;
     
     font-family: $fontStack;
- 
     
+    .Avatarbox__canvas{
+
+    }
+
     .Avatarbox__message{
     
-        width: 0px;
+        width: $bubbleMaxWidth;
         height: 0px;
 
         z-index: 1;
+        
+        user-select: none;
+        cursor: default;
 
         .Avatarbox__message__name,
         .Avatarbox__message__bubble{
@@ -35,19 +42,19 @@
 
             transform: translateX(-68%);
             
-            color: $fontColorDark--generic;
+            color: darken($fontColorDark--generic, 10%);
             
             .inner{
                 padding: 2px;
-                background-color: rgba(white, 0.5);
+                background-color: rgba(white, 0.75);
                 
-                border-radius: $cornerRadius--small;
+                border-radius: $cornerRadius--tiny;
             }
             
             &.own{
 
                 font-weight: bold;
-                color: $fontColorDark--own;
+                color: darken($fontColorDark--own, 5%);
 
             }
 
@@ -55,12 +62,11 @@
 
         .Avatarbox__message__bubble{
 
-            @include make-bubble($cornerRadius--big, $bubbleColor--generic, $fontColor, $bubbleBoxShadow, bottom, 12px, 17px, 0px, 0px, auto, 18px, auto, 0px);
-            
-            display: inline-block;
+            @extend %flex-center;
+            @include make-bubble($cornerRadius--big, $bubbleColor--generic, $fontColor, $genericBoxShadow, bottom, 12px, 17px, 0px, 0px, auto, 18px, auto, 0px);
 
-            min-width: 150px;
-            max-width: 275px;
+            min-width: $bubbleMinWidth;
+            max-width: $bubbleMaxWidth;
 
             bottom: 70px;
 
@@ -70,8 +76,8 @@
             transform-origin: center bottom;
 
             visibility: hidden;
-            
-            text-align: justify;
+
+            white-space: pre-line;
             
             &:after{
                 
@@ -88,18 +94,6 @@
                 }
 
             }
-
-        }
-
-        .Avatarbox__bubble__inner{
-
-            display: inline-block;
-
-            text-overflow: ellipsis;
-            overflow: hidden;
-
-            padding: 0px;
-            margin: 0px;
 
         }
 
